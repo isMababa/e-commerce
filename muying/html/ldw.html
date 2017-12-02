@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        overflow: hidden;
+    }
+    body{
+        color: #fff;
+    }
+    /*<!--整体-->*/
+    #ldw_title {
+        color: #fff;
+        text-align: center;
+        margin-left: 1%;
+        margin-right: 1%;
+        border-radius: 8px;
+        box-sizing: border-box;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(#e2e2e2, #a0a0a0, #e2e2e2);
+        background-color: #000000;
+
+    }
+    #ldw_title h1{
+        padding:1%;
+    }
+    #ldw_title .ldw_cover {        /*--------添加的div,作为文字蒙版-------*/
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 8px;
+        background: linear-gradient(to bottom, black 0%, transparent 50%, black);
+        opacity: 0.5;
+    }
+    /*左上角*/
+    #ldw_title1 h2{
+        text-align: center;
+
+    }
+    #ldw_mychart1, #ldw_mychart2 {
+        justify-content:center;
+        align-items:center;
+        display:-webkit-flex;
+    }
+    #ldw_mychart1{
+        border-right: 2px solid #a6a6a6;
+    }
+    #ldw_mychart2{
+        border-left: 2px solid #a6a6a6;
+    }
+    #ldw_mychart1 h6{
+        color:#f4ae1b;
+        position:absolute;
+        top:20%;
+        right:0%;
+        font-size: 15px;
+    }
+    #ldw_mychart1 img{
+        color:#f4ae1b;
+        position:absolute;
+        top:40%;
+        right:2%;
+        width:10%;
+        height:20%;
+    }
+    #ldw_mychart2 h6{
+        color:#dd5851;
+        position:absolute;
+        top:20%;
+        left:0%;
+        font-size: 15px;
+    }
+    #ldw_mychart2 img{
+        color:#dd5851;
+        position:absolute;
+        top:40%;
+        left:2%;
+        width:10%;
+        height:20%;
+    }
+    #ldw_title2 h2{
+        text-align: center;
+    }
+    #ldw_title4 h6{
+        text-align: center;
+    }
+    #ldw_title5 h6{
+        text-align: center;
+    }
+    #ldw_title6 h6{
+        text-align: center;
+    }
+    #ldw_title7 h6{
+        text-align: center;
+    }
+  /*右1*/
+    .ldw_tooltip{
+        position:absolute;
+        width:185px;
+        height:auto;
+        color:#ffffff;
+        background-color:rgba(0,0,0,.4);
+        padding:5px;
+        display:none;
+    }
+    #ldw_circle1 span,#ldw_circle2 span,#ldw_circle3 span,#ldw_circle4 span{
+        line-height: 18px;
+        font-size: 15px;
+    }
+    #ldw_circle1 span:before{
+        content:"";
+        width:15px;
+        height:15px;
+        border-radius: 100%;
+        float:left;
+        margin-top:7px;
+        margin-left:150px;
+        background-color: #5ea845;
+    }
+    #ldw_circle2 span:before{
+        content:"";
+        width:15px;
+        height:15px;
+        border-radius: 100%;
+        float:left;
+        margin-top:7px;
+        margin-left:150px;
+        background-color: #a6ff54;
+    }
+    #ldw_circle3 span:before{
+        content:"";
+        width:15px;
+        height:15px;
+        border-radius: 100%;
+        float:left;
+        margin-top:7px;
+        margin-left:150px;
+        background-color: #dbf3b0;
+    }
+    #ldw_circle4 span:before{
+        content:"";
+        width:15px;
+        height:15px;
+        border-radius: 100%;
+        float:left;
+        margin-top:7px;
+        margin-left:150px;
+        background-color: #f3ffdd;
+    }
+    #ldw_title20 h4{
+        text-align:center ;
+    }
+    #ldw_title8 h2{
+        padding-left:15%;
+    }
+    #ldw_title10 h4{
+        text-align:center ;
+    }
+    #ldw_main {
+        box-sizing: border-box;
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(#acacad 1%, #6e6e6e 5%, #79797a 10%, #fdfdfe);
+
+    }
+    #ldw_left{
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+
+    }
+    #ldw_right1{
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+
+    }
+    #ldw_right2,#ldw_right3{
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+
+    }
+    #ldw_title span{
+        width: 2.5%;
+        height: 56%;
+        display: block;
+        /*border: 1px solid #000;*/
+        background: url("../image/timg-(1).gif") no-repeat;
+        background-size: 100%;
+        position: absolute;
+        right: 1%;
+        top:35%;
+        z-index: 300;
+    }
+    #ldw_title span a{
+        width: 100%;
+        height: 100%;
+        z-index: 300;
+        display: block;
+    }
+
+</style>
+</head>
+<body>
+<div id="ldw" style="position:absolute;top:0;left:0;height:100%;width:100%;">
+    <div id="ldw_title" style="position:absolute;top:1%;left:0;height:9%;width:98%;">
+       <div class="ldw_cover"></div>
+        <h1>母婴类大数据可视化展示</h1>
+        <span><a href="/e-commerce/html/index.html"></a></span>
+    </div>
+    <div id="ldw_main" style="position:absolute;top:11%;left:1%;height:88%;width:98%;">
+        <div id="ldw_left" style="position:absolute;top:2%;left:1%;height:97%;width:29%;">
+    <div id="ldw_left1" style="position:absolute;top:0%;left:0;height:33%;width:100%;">
+        <div id="ldw_title1" style="position:absolute;top:0%;left:0;width:100%;height:10%;"><h2>女性用户是母婴用品绝对购买主力</h2></div>
+        <div id="ldw_mychart1" style="position:absolute;top:10%;left:0;width:50%;height:90%;"><h6>43.83%</h6><img src="../image/women.png"/></div>
+        <div id="ldw_mychart2" style="position:absolute;top:10%;left:50%;width:50%;height:90%;"><h6>-48.48%</h6><img src="../image/men.png"/></div>
+
+    </div>
+    <div id="ldw_left2" style="position:absolute;top:33%;left:0;height:33%;width:100%;">
+        <div id="ldw_title2" style="position:absolute;top:7%;left:0;width:100%;height:20%;"><h2>城市级别越低，女性母婴用户占比越多</h2></div>
+        <div id="ldw_mychart3" style="position:absolute;top:20%;left:0;width:100%;height:80%;"></div>
+    </div>
+    <div id="ldw_left3" style="position:absolute;top:66%;left:0;height:33%;width:100%;">
+        <div id="ldw_title4" style="position:absolute;left:0;top:0;width:50%;height:10%;"><h4>2016母婴用品网购用户性别分布</h4></div>
+        <div id="ldw_mychart4" style="position:absolute;left:0;top:10%;width:50%;height:40%;"></div>
+        <div id="ldw_title5" style="position:absolute;left:50%;top:0;width:50%;height:10%;"><h4>2016母婴用品网购用户年龄分布</h4></div>
+        <div id="ldw_mychart5" style="position:absolute;left:50%;top:10%;width:50%;height:40%;"></div>
+        <div id="ldw_title6" style="position:absolute;left:0;top:50%;width:50%;height:10%;"><h4>2016母婴用品女性网购用户集中度</h4>
+        </div>
+        <div id="ldw_mychart6" style="position:absolute;left:10%;top:55%;width:50%;height:40%;">
+        </div>
+
+        <div id="ldw_title7" style="position:absolute;left:50%;top:50%;width:50%;height:10%;"><h4>2016母婴用品25-40岁网购集中度</h4></div>
+        <div id="ldw_mychart7" style="position:absolute;left:60%;top:55%;width:50%;height:40%;"></div>
+    </div>
+        </div>
+    <div id="ldw_right1" style="position:absolute;top:2%;left:32%;height:63%;width:67%;">
+        <div id="ldw_mychart8" style="position:absolute;left:0;top:0;width:65%;height:100%;">
+            <div id="ldw_title8" style="position:absolute;left:10%;top:0;width:100%;height:6%;">
+                <h2>2016年全国各省母婴人均消费金额</h2>
+            </div>
+            <div id="ldw_bili" style="position:absolute;left:15%;top:10%;width:100%;height:36%;"><div id="ldw_circle1"><span>母婴人均消费金额大于1100</span></div>
+                <div id="ldw_circle2"><span>母婴人均消费金额大于900</span></div>
+                <div id="ldw_circle3"><span>母婴人均消费金额大于600</span></div>
+                <div id="ldw_circle4"><span>母婴人均消费金额大于400</span></div>
+            </div>
+            <div id="ldw_mychart88" style="position:absolute;left:10%;top:20%;width:100%;height:94%;">
+            </div>
+        </div>
+        <div id="ldw_mychart9" style="position:absolute;right:0;top:0;width:35%;height:100%;">
+            <div id="ldw_title9" style="position:absolute;right:0;top:0;width:100%;height:10%;">
+                <h2>2016年全国各省人口与经济状况</h2>
+            </div>
+            <div id="ldw_mychart99" style="position:absolute;right:0;top:10%;width:100%;height:90%;">
+            </div>
+        </div>
+    </div>
+    <div id="ldw_right2" style="position:absolute;top:68%;left:32%;height:31%;width:45%;">
+        <div id="ldw_mychart10" style="position:absolute;left:0;top:10%;width:100%;height:90%;"></div>
+        <div id="ldw_title10" style="position:absolute;left:0;top:0;width:100%;height:10%;">
+            <h3 style="text-align: center;">2010-2018中国孕婴童行业市场规模及增长率</h3>
+        </div>
+    </div>
+    <div id="ldw_right3" style="position:absolute;top:68%;left:78%;height:31%;width:21%;">
+        <div id="ldw_title20" style="position:absolute;top:0;left:0;height:10%;width:100%;">
+            <h3 style="text-align: center;">2016母婴网购用户站外搜索词云</h3>
+        </div>
+        <img src="../image/ciyuntu.png" style="position:absolute;width:100%;height:100%;">
+    </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../js/d3.min.js"></script>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/echarts.js"></script>
+<script src="../js/amcharts.js" type="text/javascript"></script>
+<script src="../js/serial.js" type="text/javascript"></script>
+<script>
+//    左上角
+    var ldw_dataset1 = [
+        {name:'其它',value:56.17},
+        {name:'女性',value:43.83}
+    ];
+    var ldw_dataset2 = [
+        {name:'男性',value:48.48},
+        {name:'其它',value:51.52}
+    ];
+    ldw_drawcircle1("ldw_mychart1",ldw_dataset1);
+    ldw_drawcircle2("ldw_mychart2",ldw_dataset2);
+    function ldw_drawcircle1(divname,dataset) {
+        var _swidth, _sheight;
+        _swidth = $("#" + divname).innerWidth();
+        _sheight = $("#" + divname).innerHeight();
+        $(window).resize(function () {
+            _swidth = $("#" + divname).innerWidth();
+            _sheight = $("#" + divname).innerHeight();
+        });
+        var _margin = {top: 0, left: 0, right: 0, bottom: 0};
+        var _titleHeight = 0;
+        var _chartHeight = _sheight - _margin.top - _margin.bottom - _titleHeight;
+        var _chartWidth = _swidth - _margin.left - _margin.right;
+        var _chartmargin = {top: 0, left: 0, right: 0, bottom: 0};
+        var _yaxisHeight = _chartHeight - _chartmargin.top - _chartmargin.bottom;
+        var _xaxisWidth = _chartWidth - _chartmargin.left - _chartmargin.right;
+        var colorarray = ['#f4ae1b', '#f9f9f9'];
+        var ldw_totalduration = 0;
+        var ldw_pie = d3.pie()
+                .padAngle(Math.PI * 0.01)
+                .value(function (d) {
+                    return d.value;
+                });
+        var ldw_arcdata = ldw_pie(dataset);
+        var ldw_tooltipdiv = d3.select("#" + divname)
+                .append("div")
+                .attr("class", "tooltip");
+        var ldw_arc = d3.arc()
+                .innerRadius(60)
+                .outerRadius(80);
+        var ldw_svg = d3.select("#" + divname)
+                .append("svg")
+                .attr("width", 300)
+                .attr("height", 300);
+        ldw_svg.selectAll("path")
+                .data(ldw_arcdata)
+                .enter()
+                .each(function (d, i) {
+                    d.duration = (d.endAngle - d.startAngle) / (2 * Math.PI) * 10;
+                    d.delay = ldw_totalduration;
+                    ldw_totalduration = ldw_totalduration + d.duration;
+                })
+                .append("path")
+                .attr("transform", "translate(150,150)")
+                .attr("fill", function (d, i) {
+                    return colorarray[i];
+                })
+                .transition()
+                .duration(function (d) {
+                    return d.duration * 1000;
+                })
+                .delay(function (d) {
+                    return d.delay * 1000;
+                })
+                .tween("path", function (d, i) {
+                    var node = this;
+                    var initEndAngle = d.endAngle;
+                    return function (t) {
+                        d.endAngle = d.startAngle + t * (initEndAngle - d.startAngle);
+                        d3.select(node)
+                                .attr("d", ldw_arc(d));
+                    }
+                });
+
+    }
+    function ldw_drawcircle2(divname,dataset) {
+        var _swidth, _sheight;
+        _swidth = $("#" + divname).innerWidth();
+        _sheight = $("#" + divname).innerHeight();
+        $(window).resize(function () {
+            _swidth = $("#" + divname).innerWidth();
+            _sheight = $("#" + divname).innerHeight();
+        });
+        var _margin = {top: 0, left: 0, right: 0, bottom: 0};
+        var _titleHeight = 0;
+        var _chartHeight = _sheight - _margin.top - _margin.bottom - _titleHeight;
+        var _chartWidth = _swidth - _margin.left - _margin.right;
+        var _chartmargin = {top: 0, left: 0, right: 0, bottom: 0};
+        var _yaxisHeight = _chartHeight - _chartmargin.top - _chartmargin.bottom;
+        var _xaxisWidth = _chartWidth - _chartmargin.left - _chartmargin.right;
+        var colorarray = ['#dd5851', '#f5f5f6'];
+        var ldw_totalduration = 0;
+        var ldw_pie = d3.pie()
+                .padAngle(Math.PI * 0.01)
+                .value(function (d) {
+                    return d.value;
+                });
+        var ldw_arcdata = ldw_pie(dataset);
+        var ldw_tooltipdiv = d3.select("#" + divname)
+                .append("div")
+                .attr("class", "tooltip");
+        var ldw_arc = d3.arc()
+                .innerRadius(60)
+                .outerRadius(80);
+        var ldw_svg = d3.select("#" + divname)
+                .append("svg")
+                .attr("width", 300)
+                .attr("height", 300);
+        ldw_svg.selectAll("path")
+                .data(ldw_arcdata)
+                .enter()
+                .each(function (d, i) {
+                    d.duration = (d.endAngle - d.startAngle) / (2 * Math.PI) * 10;
+                    d.delay = ldw_totalduration;
+                    ldw_totalduration = ldw_totalduration + d.duration;
+                })
+                .append("path")
+                .attr("transform", "translate(150,150)")
+                .attr("fill", function (d, i) {
+                    return colorarray[i];
+                })
+                .transition()
+                .duration(function (d) {
+                    return d.duration * 1000;
+                })
+                .delay(function (d) {
+                    return d.delay * 1000;
+                })
+                .tween("path", function (d, i) {
+                    var node = this;
+                    var initEndAngle = d.endAngle;
+                    return function (t) {
+                        d.endAngle = d.startAngle + t * (initEndAngle - d.startAngle);
+                        d3.select(node)
+                                .attr("d", ldw_arc(d));
+                    }
+                });
+
+    }
+//    左2
+var ldw_myechart1=echarts.init(document.getElementById('ldw_mychart3'));
+var ldw_option = {
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性','女性']
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['一线','二线','三线','四线','五线','六线']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'男性',
+            type:'bar',
+            itemStyle:{
+                normal:{
+                    color:"#f2b713"
+                }
+            },
+            data:[28.9, 25.0, 22.6, 22.1, 21.8,  20.5],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+        {
+            name:'女性',
+            type:'bar',
+            itemStyle:{
+                normal:{
+                    color:"#e6615c"
+                }
+            },
+            data:[71.0, 74.9, 77.3, 77.8,  78.1, 79.5],
+            markPoint : {
+                data : [
+                    {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183},
+                    {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name : '平均值'}
+                ]
+            }
+        }
+    ]
+
+};
+ldw_myechart1.setOption(ldw_option);
+//    左3
+var ldw_chartData = [
+    {
+        "name": '女',
+        "value": 51.5
+    },
+    {
+        "name": '男',
+        "value": 48.5
+    }
+
+];
+var ldw_chartData2 = [
+    {
+        "name": '18岁及以下',
+        "value": 5
+    },
+    {
+        "name":'19-24岁',
+        "value": 17.3
+    },
+    {
+        "name": '25-30岁',
+        "value": 25.6
+    },
+    {
+        "name": '31-35岁',
+        "value": 25.7
+    },
+    {
+        "name": '36-40岁',
+        "value": 17
+    },
+    {
+        "name": '41岁以上',
+        "value": 9.4
+    }
+];
+//    3D柱形图
+ldw_bar3D("ldw_mychart4",ldw_chartData,"rgba(247,96,5,1)");
+ldw_bar3D("ldw_mychart5",ldw_chartData2,"rgba(247,96,5,1)");
+function ldw_bar3D(divId,chartData,barColor){
+    AmCharts.ready(function () {
+        var chart = new AmCharts.AmSerialChart();
+        chart.dataProvider = chartData;
+        chart.categoryField = "name";
+        chart.depth3D = 30;
+        chart.angle = 40;
+        chart.startDuration = 2;
+        chart.sequencedAnimation = true;
+        var valueAxis = new AmCharts.ValueAxis();
+        valueAxis.minimum = 0;
+        valueAxis.unit = "%";
+        valueAxis.gridAlpha = 0.1;
+        chart.addValueAxis(valueAxis);
+        var guide = new AmCharts.Guide();
+        guide.lineColor ="white";
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "value";
+        graph.type = "column";
+        graph.fillColors = barColor;
+        graph.fillAlphas = 0.5;
+        graph.balloonText = " <b>[[value]]</b>%";
+        chart.addGraph(graph);
+        chart.write(divId);
+
+    });
+}
+//双重环形图
+var ldw_jcmdatasetpie2=[
+    {name1:"nv",name:"nan",value:50,value1:50},
+    {name1:"nv",name:"nan",value:60,value1:50}
+];
+var ldw_jcmdatasetpie3=[
+    {name1:"nv",name:"nan",value:80,value1:20},
+    {name1:"nv",name:"nan",value:50,value1:50}
+];
+ldw_centertoppie('ldw_mychart6',ldw_jcmdatasetpie2,"TGI 116.0");
+ldw_centertoppie('ldw_mychart7',ldw_jcmdatasetpie3,"TGI 113.6");
+function ldw_centertoppie(divname,dataset,text) {
+    d3.select("#" + divname).html("");
+    var _divheight = $("#" + divname).height();
+    var _divwidth = $("#" + divname).width();
+    var color2=['#cdcdd1','#ffee22'];
+    var colors=["#cdcdd1","#b1d62e"];
+    //饼图生成器
+    var totalduration = 0;
+    //设置标题区高度
+    var _titleheight = 0;
+    //设置报表整体外留白及获取其宽高
+    var _margin = {top: 0, right: 0, bottom: 0, left: 10};
+    var _chartheight = _divheight - _margin.top - _margin.bottom - _titleheight;
+    var _chartwidth = _divwidth - _margin.right - _margin.left;
+    var radius = Math.min(_chartwidth, _chartheight) / 2;
+    //设置绘图区外留白及获取其宽高
+    var _chartmargin = {top: 0, right: 50, bottom: 0, left: 50};
+    var _yaxisheight = _chartheight - _chartmargin.top - _chartmargin.bottom;
+    var _xaxiswidth = _chartwidth - _chartmargin.right - _chartmargin.left;
+    //饼图生成器
+    var _pie = d3.pie().sort(null)
+            .value(function (d) {return d.value;});
+    var _pie2 = d3.pie().sort(null)
+            .value(function (d) {return d.value1;});
+    //基于dataset生成弧状所需要的基础数据
+    var _arcdata = _pie(dataset);
+    var _arcdata2= _pie2(dataset);
+    console.log(_arcdata2);
+    var arc0 = d3.arc()
+            .innerRadius(40)
+            .outerRadius(50);
+    var arc3 = d3.arc()
+            .innerRadius(30)
+            .outerRadius(40);
+    var _svg = d3.select("#" + divname)
+            .append("svg")
+            .attr("width", _divwidth)
+            .attr("height", _divheight);
+    //内环
+    var pie1 = _svg
+            .selectAll("path")
+            .data(_arcdata)
+            .enter()
+            .each(function (d, i) {
+                d.duration = (d.endAngle - d.startAngle) / (2 * Math.PI) * 10;
+                d.delay = totalduration;
+                totalduration = totalduration + d.duration;
+            })
+            .append("g")
+            .attr('class','in1')
+            .append("path")
+            .attr("transform", "translate(" + _xaxiswidth / 1.8 + "," + _yaxisheight / 1.8 + ")")
+            .style("fill", function (d) {
+                return colors[d.index];
+            })
+            .transition()
+            .tween("path", function (d, i) {
+                var node = this;
+                var initEndAngle = d.endAngle;
+                return function (t) {
+                    d.endAngle = d.startAngle + t * (initEndAngle - d.startAngle);
+                    d3.select(node)
+                            .attr("d", arc0(d))
+                }
+            });
+    //中心文字
+    var innertext=_svg.select('.in1')
+            .append('g')
+            .attr("transform", "translate(" + _xaxiswidth / 1.8 + "," + _yaxisheight / 1.8 + ")")
+            .append("text")
+            .text(text)
+            .style("font-size",'0.6em')
+            .attr('dy','0.5em')
+            .attr('text-anchor','middle')
+            .style('fill','#000');
+    var _glevelpie2=_svg.append('g')
+            .attr("transform", "translate(" + _xaxiswidth / 1.8 + "," + _yaxisheight / 1.8 + ")");
+    _glevelpie2.selectAll('path')
+            .data(_arcdata2)
+            .enter()
+            .append('g')
+            .attr('class','outgroup')
+            .append('path')
+            .attr('d',function(d){
+                return arc3(d);
+            })
+            .style("fill", function (d) {
+                return color2[d.index];
+            })
+
+    ;}
+//    右1
+var ldw_dataset = [
+    {name:'新疆',value:980},
+    {name:'西藏',value:410},
+    {name:'内蒙古',value:950},
+    {name:'青海',value:410},
+    {name:'四川',value:1300},
+    {name:'黑龙江',value:988},
+    {name:'甘肃',value:850},
+    {name:'云南',value:650},
+    {name:'广西',value:910},
+    {name:'湖南',value:920},
+    {name:'陕西',value:660},
+    {name:'广东',value:1150},
+    {name:'吉林',value:850},
+    {name:'河北',value:900},
+    {name:'湖北',value:1100},
+    {name:'贵州',value:680},
+    {name:'山东',value:1200},
+    {name:'江西',value:610},
+    {name:'河南',value:880},
+    {name:'辽宁',value:1100},
+    {name:'山西',value:620},
+    {name:'安徽',value:620},
+    {name:'福建',value:1205},
+    {name:'浙江',value:1180},
+    {name:'江苏',value:1150},
+    {name:'重庆',value:410},
+    {name:'宁夏',value:410},
+    {name:'海南',value:615},
+    {name:'北京',value:690},
+    {name:'天津',value:410},
+    {name:'香港',value:667},
+    {name:'上海',value:410}
+];
+ldw_ditu(ldw_dataset);
+function ldw_ditu(dataset){
+    d3.json("china.json",function(error,data){
+        var ldw_tooltipdiv=d3.select("body")
+                .append("div")
+                .attr("class","ldw_tooltip");
+        //取得数组中value最大值
+        var maxdata=d3.max(dataset,function(d){
+            return d.value;
+        });
+        //定义量化比例尺：
+        var color=d3.scaleQuantize()
+                .domain([400,maxdata])
+                .range(['#f3ffdd','#dbf3b0','#a6ff54','#5ea845']);
+        //定义map对象：
+        var mapdata=d3.map(dataset,function(d){
+            return d.name;
+        });
+
+        //定义投影：
+        var _projecttion=d3.geoMercator()
+                .center([ 166.39096260070801,69.9147396604924])
+                .fitExtent([[0,0],[700,400]],data);//让地图自适应屏幕
+//               .scale("500");
+        //定义地理路径生成器：
+        var _geopath=d3.geoPath()
+                .projection(_projecttion);
+//    console.log(_geopath(data));
+        //定义svg,生成path
+        var _svg=d3.select("#ldw_mychart88")
+                .append("svg")
+                .attr("width",'100%')
+                .attr("height",'100%');
+        _svg.selectAll("path")
+                .data(data.features)
+                .enter()
+                .append("path")
+                .attr("d",_geopath)
+                .attr("stroke","black")
+                .attr("fill",function(d){
+                    var proname=d.properties.name;
+                    var prodata=mapdata.get(proname);
+                    if(prodata){
+                        return color(prodata.value)
+                    }else{
+                        return 'gray'
+                    }
+                })
+                .on("mouseover",function(d,i){
+                    var a= d.properties.name;
+                    ldw_tooltipdiv.style("top",d3.event.y+10+"px")
+                            .style("left",d3.event.x+10+"px")
+                            .html( a+"<br/>母婴人均年消费额："+dataset[i].value )
+                            .style("display","block")
+
+                })
+                .on("mousemove",function(d,i){
+                    ldw_tooltipdiv.style("top",d3.event.y+10+"px")
+                            .style("left",d3.event.x+10+"px")
+                })
+                .on("mouseout",function(d,i){
+                    ldw_tooltipdiv.style("display","none")
+                })
+                .on("click",function(d){
+//                   if(flag==1) {
+                    d3.select('#ldw_mychart99').select("svg").remove();
+//                       flag = 0
+//                   }
+                    for(var j=0;j<zhongguo.length;j++){
+                        if(zhongguo[j][2]==d.properties.name){
+                            var c=zhongguo[j][0];
+                            var e=zhongguo[j][1];
+                        }
+                    }
+                    ldw_lidao(c,e);
+                });
+
+        _svg.selectAll("text")
+                .data(data.features)
+                .enter()
+                .append('text')
+                .attr("x",function(d){
+                    var xypoint=_geopath.centroid(d);
+                    return xypoint[0];
+                })
+                .attr("y",function(d){
+                    var xypoint=_geopath.centroid(d);
+                    return xypoint[1];
+                })
+                .attr("dy","1em")
+                .attr("text-anchor","middle")
+                .text(function(d){
+                    return d.properties.name;
+                })
+                .style("font-size",'12px')
+    })
+}
+var ldw_datas=[
+    {name:'中国',level:1},
+    {name:'人口',level:2},
+    {name:'4.96%',level:3},
+    {name:'13.8亿人',level:3},
+    {name:'GDP',level:2},
+    {name:'6.7%',level:3},
+    {name:'74.4万亿',level:3}
+
+];
+var ldw_links=[
+    {source:'中国',target:'人口'},
+    {source:'中国',target:'GDP'},
+    {source:'人口',target:'4.96%'},
+    {source:'人口',target:'13.8亿人'},
+    {source:'GDP',target:'6.7%'},
+    {source:'GDP',target:'74.4万亿'}
+
+];
+var ldw_datas1=[
+    {name:'广东',level:1},
+    {name:'人口',level:2},
+    {name:'11.85%',level:3},
+    {name:'10430万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.5%',level:3},
+    {name:'7.9万亿',level:3}
+
+];
+var ldw_links1=[
+    {source:'广东',target:'人口'},
+    {source:'广东',target:'GDP'},
+    {source:'人口',target:'11.85%'},
+    {source:'人口',target:'10430万人'},
+    {source:'GDP',target:'7.5%'},
+    {source:'GDP',target:'7.9万亿'}
+
+];
+var ldw_datas2=[
+    {name:'山东',level:1},
+    {name:'人口',level:2},
+    {name:'17.89%',level:3},
+    {name:'9579万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.6%',level:3},
+    {name:'6.7万亿',level:3}
+
+];
+var ldw_links2=[
+    {source:'山东',target:'人口'},
+    {source:'山东',target:'GDP'},
+    {source:'人口',target:'17.89%'},
+    {source:'人口',target:'9579万人'},
+    {source:'GDP',target:'7.6%'},
+    {source:'GDP',target:'6.7万亿'}
+
+];
+var ldw_datas3=[
+    {name:'河南',level:1},
+    {name:'人口',level:2},
+    {name:'13.26%',level:3},
+    {name:'9402万人',level:3},
+    {name:'GDP',level:2},
+    {name:'8.1%',level:3},
+    {name:'4.0万亿',level:3}
+
+];
+var ldw_links3=[
+    {source:'河南',target:'人口'},
+    {source:'河南',target:'GDP'},
+    {source:'人口',target:'13.26%'},
+    {source:'人口',target:'9402万人'},
+    {source:'GDP',target:'8.1%'},
+    {source:'GDP',target:'4.0万亿'}
+
+];
+var ldw_datas4=[
+    {name:'四川',level:1},
+    {name:'人口',level:2},
+    {name:'10.48%',level:3},
+    {name:'8041万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.7%',level:3},
+    {name:'3.2万亿',level:3}
+
+];
+var ldw_links4=[
+    {source:'四川',target:'人口'},
+    {source:'四川',target:'GDP'},
+    {source:'人口',target:'10.48%'},
+    {source:'人口',target:'8041万人'},
+    {source:'GDP',target:'7.7%'},
+    {source:'GDP',target:'3.2万亿'}
+
+];
+var ldw_datas5=[
+    {name:'江苏',level:1},
+    {name:'人口',level:2},
+    {name:'9.76%',level:3},
+    {name:'7865万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.8%',level:3},
+    {name:'7.6万亿',level:3}
+
+];
+var ldw_links5=[
+    {source:'江苏',target:'人口'},
+    {source:'江苏',target:'GDP'},
+    {source:'人口',target:'9.76%'},
+    {source:'人口',target:'7865万人'},
+    {source:'GDP',target:'7.8%'},
+    {source:'GDP',target:'7.6万亿'}
+
+];
+var ldw_datas6=[
+    {name:'河北',level:1},
+    {name:'人口',level:2},
+    {name:'12.42%',level:3},
+    {name:'7185万人',level:3},
+    {name:'GDP',level:2},
+    {name:'6.8%',level:3},
+    {name:'3.1万亿',level:3}
+
+];
+var ldw_links6=[
+    {source:'河北',target:'人口'},
+    {source:'河北',target:'GDP'},
+    {source:'人口',target:'12.42%'},
+    {source:'人口',target:'7185万人'},
+    {source:'GDP',target:'6.8%'},
+    {source:'GDP',target:'3.1万亿'}
+
+];
+var ldw_datas7=[
+    {name:'湖南',level:1},
+    {name:'人口',level:2},
+    {name:'13.57%',level:3},
+    {name:'6568万人',level:3},
+    {name:'GDP',level:2},
+    {name:'3.1%',level:3},
+    {name:'7.9万亿',level:3}
+
+];
+var ldw_links7=[
+    {source:'湖南',target:'人口'},
+    {source:'湖南',target:'GDP'},
+    {source:'人口',target:'13.57%'},
+    {source:'人口',target:'6568万人'},
+    {source:'GDP',target:'3.1%'},
+    {source:'GDP',target:'7.9万亿'}
+
+];
+var ldw_datas8=[
+    {name:'安徽',level:1},
+    {name:'人口',level:2},
+    {name:'13.02%',level:3},
+    {name:'5950万人',level:3},
+    {name:'GDP',level:2},
+    {name:'2.4%',level:3},
+    {name:'8.7万亿',level:3}
+
+];
+var ldw_links8=[
+    {source:'安徽',target:'人口'},
+    {source:'安徽',target:'GDP'},
+    {source:'人口',target:'13.02%'},
+    {source:'人口',target:'5950万人'},
+    {source:'GDP',target:'2.4%'},
+    {source:'GDP',target:'8.7万亿'}
+
+];
+var ldw_datas9=[
+    {name:'湖北',level:1},
+    {name:'人口',level:2},
+    {name:'12.04%',level:3},
+    {name:'5723万人',level:3},
+    {name:'GDP',level:2},
+    {name:'5.07%',level:3},
+    {name:'3.2万亿',level:3}
+
+];
+var ldw_links9=[
+    {source:'湖北',target:'人口'},
+    {source:'湖北',target:'GDP'},
+    {source:'人口',target:'12.04%'},
+    {source:'人口',target:'5723万人'},
+    {source:'GDP',target:'5.07%'},
+    {source:'GDP',target:'3.2万亿'}
+
+];
+var ldw_datas10=[
+    {name:'浙江',level:1},
+    {name:'人口',level:2},
+    {name:'11.22%',level:3},
+    {name:'5442万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.5%',level:3},
+    {name:'4.6万亿',level:3}
+
+];
+var ldw_links10=[
+    {source:'浙江',target:'人口'},
+    {source:'浙江',target:'GDP'},
+    {source:'人口',target:'11.22%'},
+    {source:'人口',target:'5442万人'},
+    {source:'GDP',target:'7.5%'},
+    {source:'GDP',target:'4.6万亿'}
+
+];
+var ldw_datas11=[
+    {name:'广西',level:1},
+    {name:'人口',level:2},
+    {name:'13.83%',level:3},
+    {name:'4602万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.3%',level:3},
+    {name:'1.8万亿',level:3}
+
+];
+var ldw_links11=[
+    {source:'广西',target:'人口'},
+    {source:'广西',target:'GDP'},
+    {source:'人口',target:'13.83%'},
+    {source:'人口',target:'4602万人'},
+    {source:'GDP',target:'7.3%'},
+    {source:'GDP',target:'1.8万亿'}
+
+];
+var ldw_datas12=[
+    {name:'云南',level:1},
+    {name:'人口',level:2},
+    {name:'13.16%',level:3},
+    {name:'4596万人',level:3},
+    {name:'GDP',level:2},
+    {name:'8.7%',level:3},
+    {name:'1.4万亿',level:3}
+
+];
+var ldw_links12=[
+    {source:'云南',target:'人口'},
+    {source:'云南',target:'GDP'},
+    {source:'人口',target:'13.16%'},
+    {source:'人口',target:'4596万人'},
+    {source:'GDP',target:'8.7%'},
+    {source:'GDP',target:'1.4万亿'}
+
+];
+var ldw_datas13=[
+    {name:'江西',level:1},
+    {name:'人口',level:2},
+    {name:'13.45%',level:3},
+    {name:'4456万人',level:3},
+    {name:'GDP',level:2},
+    {name:'9%',level:3},
+    {name:'1.8万亿',level:3}
+
+];
+var ldw_links13=[
+    {source:'江西',target:'人口'},
+    {source:'江西',target:'GDP'},
+    {source:'人口',target:'13.45%'},
+    {source:'人口',target:'4456万人'},
+    {source:'GDP',target:'9%'},
+    {source:'GDP',target:'1.8万亿'}
+
+];
+var ldw_datas14=[
+    {name:'辽宁',level:1},
+    {name:'人口',level:2},
+    {name:'6.6%',level:3},
+    {name:'4374万人',level:3},
+    {name:'GDP',level:2},
+    {name:'-2.5%',level:3},
+    {name:'2.2万亿',level:3}
+
+];
+var ldw_links14=[
+    {source:'辽宁',target:'人口'},
+    {source:'辽宁',target:'GDP'},
+    {source:'人口',target:'6.6%'},
+    {source:'人口',target:'4374万人'},
+    {source:'GDP',target:'-2.5%'},
+    {source:'GDP',target:'2.2万亿'}
+
+];
+var ldw_datas15=[
+    {name:'黑龙江',level:1},
+    {name:'人口',level:2},
+    {name:'6.12%',level:3},
+    {name:'3831万人',level:3},
+    {name:'GDP',level:2},
+    {name:'6.1%',level:3},
+    {name:'1.5万亿',level:3}
+
+];
+var ldw_links15=[
+    {source:'黑龙江',target:'人口'},
+    {source:'黑龙江',target:'GDP'},
+    {source:'人口',target:'6.12%'},
+    {source:'人口',target:'3831万人'},
+    {source:'GDP',target:'6.1%'},
+    {source:'GDP',target:'1.5万亿'}
+
+];
+var ldw_datas16=[
+    {name:'陕西',level:1},
+    {name:'人口',level:2},
+    {name:'10.4%',level:3},
+    {name:'3732万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.6%',level:3},
+    {name:'1.9万亿',level:3}
+
+];
+var ldw_links16=[
+    {source:'陕西',target:'人口'},
+    {source:'陕西',target:'GDP'},
+    {source:'人口',target:'10.4%'},
+    {source:'人口',target:'3732万人'},
+    {source:'GDP',target:'7.6%'},
+    {source:'GDP',target:'1.9万亿'}
+
+];
+var ldw_datas17=[
+    {name:'山西',level:1},
+    {name:'人口',level:2},
+    {name:'10.29%',level:3},
+    {name:'3571万人',level:3},
+    {name:'GDP',level:2},
+    {name:'4.5%',level:3},
+    {name:'1.2万亿',level:3}
+
+];
+var ldw_links17=[
+    {source:'山西',target:'人口'},
+    {source:'山西',target:'GDP'},
+    {source:'人口',target:'10.29%'},
+    {source:'人口',target:'3571万人'},
+    {source:'GDP',target:'4.5%'},
+    {source:'GDP',target:'1.2万亿'}
+
+];
+var ldw_datas18=[
+    {name:'福建',level:1},
+    {name:'人口',level:2},
+    {name:'14.5%',level:3},
+    {name:'3552万人',level:3},
+    {name:'GDP',level:2},
+    {name:'8.4%',level:3},
+    {name:'2.8万亿',level:3}
+
+];
+var ldw_links18=[
+    {source:'福建',target:'人口'},
+    {source:'福建',target:'GDP'},
+    {source:'人口',target:'14.5%'},
+    {source:'人口',target:'3552万人'},
+    {source:'GDP',target:'8.4%'},
+    {source:'GDP',target:'2.8万亿'}
+
+];
+var ldw_datas19=[
+    {name:'贵州',level:1},
+    {name:'人口',level:2},
+    {name:'13.43%',level:3},
+    {name:'3476万人',level:3},
+    {name:'GDP',level:2},
+    {name:'10.5%',level:3},
+    {name:'1.2万亿',level:3}
+
+];
+var ldw_links19=[
+    {source:'贵州',target:'人口'},
+    {source:'贵州',target:'GDP'},
+    {source:'人口',target:'13.43%'},
+    {source:'人口',target:'3476万人'},
+    {source:'GDP',target:'10.5%'},
+    {source:'GDP',target:'1.2万亿'}
+
+];
+var ldw_datas20=[
+    {name:'重庆',level:1},
+    {name:'人口',level:2},
+    {name:'11.77%',level:3},
+    {name:'2884万人',level:3},
+    {name:'GDP',level:2},
+    {name:'10.7%',level:3},
+    {name:'1.7万亿',level:3}
+
+];
+var ldw_links20=[
+    {source:'重庆',target:'人口'},
+    {source:'重庆',target:'GDP'},
+    {source:'人口',target:'11.77%'},
+    {source:'人口',target:'2884万人'},
+    {source:'GDP',target:'10.7%'},
+    {source:'GDP',target:'1.7万亿'}
+
+];
+var ldw_datas21=[
+    {name:'吉林',level:1},
+    {name:'人口',level:2},
+    {name:'5.55%',level:3},
+    {name:'2746万人',level:3},
+    {name:'GDP',level:2},
+    {name:'6.9%',level:3},
+    {name:'1.4万亿',level:3}
+
+];
+var ldw_links21=[
+    {source:'吉林',target:'人口'},
+    {source:'吉林',target:'GDP'},
+    {source:'人口',target:'5.55%'},
+    {source:'人口',target:'2746万人'},
+    {source:'GDP',target:'6.9%'},
+    {source:'GDP',target:'1.4万亿'}
+
+];
+var ldw_datas22=[
+    {name:'甘肃',level:1},
+    {name:'人口',level:2},
+    {name:'12.18%',level:3},
+    {name:'2557万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.6%',level:3},
+    {name:'0.7万亿',level:3}
+
+];
+var ldw_links22=[
+    {source:'甘肃',target:'人口'},
+    {source:'甘肃',target:'GDP'},
+    {source:'人口',target:'12.18%'},
+    {source:'人口',target:'2557万人'},
+    {source:'GDP',target:'7.6%'},
+    {source:'GDP',target:'0.7万亿'}
+
+];
+var ldw_datas23=[
+    {name:'内蒙古',level:1},
+    {name:'人口',level:2},
+    {name:'9%',level:3},
+    {name:'2470万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.2%',level:3},
+    {name:'1.8万亿',level:3}
+
+];
+var ldw_links23=[
+    {source:'内蒙古',target:'人口'},
+    {source:'内蒙古',target:'GDP'},
+    {source:'人口',target:'9%'},
+    {source:'人口',target:'2470万人'},
+    {source:'GDP',target:'7.2%'},
+    {source:'GDP',target:'1.8万亿'}
+
+];
+var ldw_datas25=[
+    {name:'上海',level:1},
+    {name:'人口',level:2},
+    {name:'9%',level:3},
+    {name:'2301万人',level:3},
+    {name:'GDP',level:2},
+    {name:'6.8%',level:3},
+    {name:'2.7万亿',level:3}
+
+];
+var ldw_links25=[
+    {source:'上海',target:'人口'},
+    {source:'上海',target:'GDP'},
+    {source:'人口',target:'9%'},
+    {source:'人口',target:'2301万人'},
+    {source:'GDP',target:'6.8%'},
+    {source:'GDP',target:'2.7万亿'}
+
+];
+var ldw_datas26=[
+    {name:'新疆',level:1},
+    {name:'人口',level:2},
+    {name:'15.34%',level:3},
+    {name:'2181万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.6%',level:3},
+    {name:'0.96万亿',level:3}
+
+];
+var ldw_links26=[
+    {source:'新疆',target:'人口'},
+    {source:'新疆',target:'GDP'},
+    {source:'人口',target:'15.34%'},
+    {source:'人口',target:'2181万人'},
+    {source:'GDP',target:'7.6%'},
+    {source:'GDP',target:'0.96万亿'}
+
+];
+var ldw_datas27=[
+    {name:'北京',level:1},
+    {name:'人口',level:2},
+    {name:'9.32%',level:3},
+    {name:'1961万人',level:3},
+    {name:'GDP',level:2},
+    {name:'6.7%',level:3},
+    {name:'2.5万亿',level:3}
+
+];
+var ldw_links27=[
+    {source:'北京',target:'人口'},
+    {source:'北京',target:'GDP'},
+    {source:'人口',target:'9.32%'},
+    {source:'人口',target:'1961万人'},
+    {source:'GDP',target:'6.7%'},
+    {source:'GDP',target:'2.5万亿'}
+
+];
+var ldw_datas28=[
+    {name:'天津',level:1},
+    {name:'人口',level:2},
+    {name:'7.3%',level:3},
+    {name:'1293万人',level:3},
+    {name:'GDP',level:2},
+    {name:'9%',level:3},
+    {name:'1.7万亿',level:3}
+
+];
+var ldw_links28=[
+    {source:'天津',target:'人口'},
+    {source:'天津',target:'GDP'},
+    {source:'人口',target:'7.3%'},
+    {source:'人口',target:'1293万人'},
+    {source:'GDP',target:'9%'},
+    {source:'GDP',target:'1.7万亿'}
+
+];
+var ldw_datas29=[
+    {name:'海南',level:1},
+    {name:'人口',level:2},
+    {name:'14.57%',level:3},
+    {name:'867万人',level:3},
+    {name:'GDP',level:2},
+    {name:'7.5%',level:3},
+    {name:'0.4万亿',level:3}
+
+];
+var ldw_links29=[
+    {source:'海南',target:'人口'},
+    {source:'海南',target:'GDP'},
+    {source:'人口',target:'14.57%'},
+    {source:'人口',target:'867万人'},
+    {source:'GDP',target:'7.5%'},
+    {source:'GDP',target:'0.4万亿'}
+
+];
+var ldw_datas30=[
+    {name:'宁夏',level:1},
+    {name:'人口',level:2},
+    {name:'13.69%',level:3},
+    {name:'630万人',level:3},
+    {name:'GDP',level:2},
+    {name:'8.1%',level:3},
+    {name:'0.3万亿',level:3}
+
+];
+var ldw_links30=[
+    {source:'宁夏',target:'人口'},
+    {source:'宁夏',target:'GDP'},
+    {source:'人口',target:'13.69%'},
+    {source:'人口',target:'630万人'},
+    {source:'GDP',target:'8.1%'},
+    {source:'GDP',target:'0.3万亿'}
+
+];
+var ldw_datas31=[
+    {name:'青海',level:1},
+    {name:'人口',level:2},
+    {name:'14.7%',level:3},
+    {name:'562万人',level:3},
+    {name:'GDP',level:2},
+    {name:'8%',level:3},
+    {name:'0.25万亿',level:3}
+
+];
+var ldw_links31=[
+    {source:'青海',target:'人口'},
+    {source:'青海',target:'GDP'},
+    {source:'人口',target:'14.7%'},
+    {source:'人口',target:'562万人'},
+    {source:'GDP',target:'8%'},
+    {source:'GDP',target:'0.25万亿'}
+
+];
+var ldw_datas32=[
+    {name:'西藏',level:1},
+    {name:'人口',level:2},
+    {name:'15.79%',level:3},
+    {name:'300万人',level:3},
+    {name:'GDP',level:2},
+    {name:'10%',level:3},
+    {name:'0.1万亿',level:3}
+
+];
+var ldw_links32=[
+    {source:'西藏',target:'人口'},
+    {source:'西藏',target:'GDP'},
+    {source:'人口',target:'15.79%'},
+    {source:'人口',target:'300万人'},
+    {source:'GDP',target:'10%'},
+    {source:'GDP',target:'0.1万亿'}
+
+];
+var guangdong=[ldw_datas1,ldw_links1,'广东'];
+var shandong=[ldw_datas2,ldw_links2,'山东'];
+var sichuan=[ldw_datas4,ldw_links4,'四川'];
+var henan=[ldw_datas3,ldw_links3,'河南'];
+var jiangsu=[ldw_datas5,ldw_links5,'江苏'];
+var hebei=[ldw_datas6,ldw_links6,'河北'];
+var hunan=[ldw_datas7,ldw_links7,'湖南'];
+var anhui=[ldw_datas8,ldw_links8,'安徽'];
+var hubei=[ldw_datas9,ldw_links9,'湖北'];
+var zhejiang=[ldw_datas10,ldw_links10,'浙江'];
+var guangxi=[ldw_datas11,ldw_links11,'广西'];
+var yunan=[ldw_datas12,ldw_links12,'云南'];
+var jiangxi=[ldw_datas13,ldw_links13,'江西'];
+var liaoning=[ldw_datas14,ldw_links14,'辽宁'];
+var heilongjiang=[ldw_datas15,ldw_links15,'黑龙江'];
+var shanxi=[ldw_datas16,ldw_links16,'陕西'];
+var shannxi=[ldw_datas17,ldw_links17,'山西'];
+var fujian=[ldw_datas18,ldw_links18,'福建'];
+var guizhou=[ldw_datas19,ldw_links19,'贵州'];
+var chongqing=[ldw_datas20,ldw_links20,'重庆'];
+var jilin=[ldw_datas21,ldw_links21,'吉林'];
+var gansu=[ldw_datas22,ldw_links22,'甘肃'];
+var neimenggu=[ldw_datas23,ldw_links23,'内蒙古'];
+var shanghai=[ldw_datas25,ldw_links25,'上海'];
+var xinjiang=[ldw_datas26,ldw_links26,'新疆'];
+var beijing=[ldw_datas27,ldw_links27,'北京'];
+var tianjin=[ldw_datas28,ldw_links28,'天津'];
+var hainan=[ldw_datas29,ldw_links29,'海南'];
+var ningxia=[ldw_datas30,ldw_links30,'宁夏'];
+var qinghai=[ldw_datas31,ldw_links31,'青海'];
+var xizang=[ldw_datas32,ldw_links32,'西藏'];
+var zhongguo=[guangdong,shandong,henan,sichuan,jiangsu,hebei,hunan,anhui,hubei,zhejiang,guangxi,yunan,jiangxi,liaoning,heilongjiang,shanxi,shannxi,fujian,guizhou,chongqing,jilin,gansu,neimenggu,shanghai,xinjiang,beijing,tianjin,hainan,ningxia,qinghai,xizang ];
+//    var flag=1;
+//if(flag==1){
+ldw_lidao(ldw_datas,ldw_links);
+//}
+function ldw_lidao(data,links){
+    var ldw_colorarray = ['#22c3aa','#ffaf51','#f4e001','#f4e001','#59c4e6','#a5e7f0',"#a5e7f0"];
+    //3.定义力模拟器
+    var _simulation=d3.forceSimulation()
+            .force("center",d3.forceCenter(200,200))
+            .force("charge",d3.forceManyBody().strength(-1100))
+            .force("link",d3.forceLink().id(function(d){
+                return d.name;
+            }));
+    _simulation.nodes(data)
+            .on("tick",function(){
+                _allcircle.attr("cx",function(d){
+                    return d.x
+                });
+                _allcircle.attr("cy",function(d){
+                    return d.y
+                });
+                _allline.attr("x1",function(d){
+//                                console.log(d);
+                            return d.source.x
+                        })
+                        .attr("y1",function(d){
+                            return d.source.y
+                        })
+                        .attr("x2",function(d){
+                            return d.target.x
+                        })
+                        .attr("y2",function(d){
+                            return d.target.y
+                        });
+                _alltext.attr("x",function(d){
+                    return d.x
+                });
+                _alltext.attr("y",function(d){
+                    return d.y
+                })
+            })
+    ;//对data数据重新布局
+    _simulation.force("link")
+            .links(links);
+    console.log(data);
+    //4.定义画布：
+    var _svg=d3.select("#ldw_mychart99")
+            .append("svg")
+            .attr("width",'100%')
+            .attr("height",'100%');
+    //6.添加连接：
+    var _allline=_svg.selectAll("line")
+            .data(links)
+            .enter()
+            .append("line")
+            .style("stroke","black");
+
+    //5.添加圆及相应的设置
+    var _allcircle=_svg.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("r",30)
+            .style("fill",function(d,i){
+                return ldw_colorarray[i]
+            });
+    //6.添加文本：
+    var _alltext=_svg.selectAll("text")
+            .data(data)
+            .enter()
+            .append("text")
+            .text(function(d){
+                return d.name
+            })
+            .attr("text-anchor","middle")
+            .attr("dy","0.3em")
+}
+//    右2
+var ldw_myechart10=echarts.init(document.getElementById('ldw_mychart10'));
+var ldw_option10 = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+
+    legend: {
+        data:['孕婴童行业市场规模（万亿）','增长率（%）']
+    },
+    xAxis: [
+        {
+            type: 'category',
+
+            data: ['2010','2011','2012','2013','2014','2015','2016','2017','2018'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '孕婴童行业市场规模（万亿）',
+            min: 8000,
+            max: 35000,
+//                interval: 50,
+            axisLabel: {
+                formatter: '{value} 万亿'
+            }
+        },
+        {
+            type: 'value',
+            name: '增长率（%）',
+            min: 0,
+            max: 18,
+//                interval: 5,
+            axisLabel: {
+                formatter: '{value} %'
+            }
+        }
+    ],
+    series: [
+        {
+            name:'孕婴童行业市场规模（万亿）',
+            type:'bar',
+            itemStyle:{
+                normal:{
+                    color:"#b2d233"
+                }
+            },
+            data:[10043.3, 11089.0, 12565.0, 14303.6, 16542.5, 19166.7,22276.9, 25919.6, 30196.4]
+        },
+
+        {
+            lineStyle:{
+                normal:{
+                    width:5
+                }
+            },
+            name:'增长率（%）',
+            type:'line',
+            yAxisIndex:1,
+            itemStyle:{
+                normal:{
+                    color:"#b2d233"
+                }
+
+            },
+            data:[10.1, 10.4, 13.3, 13.8, 15.7,15.9,16.2, 16.4, 16.5]
+        }
+    ]
+};
+ldw_myechart10.setOption(ldw_option10);
+</script>

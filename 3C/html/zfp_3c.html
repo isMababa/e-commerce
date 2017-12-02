@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3C类大数据可视化展示</title>
+    <script src="../js/echarts.js"></script>
+    <script src="../js/d3.js"></script>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/china.js"></script>
+    <script src="../js/macarons.js"></script>
+    <script src="../js/walden.js"></script>
+    <!--   <style>
+           .c_top, .c_top:before, .c_top:after {
+               position: absolute;
+               top: 0;
+               bottom: 0;
+               left: 0;
+               right: 0;
+           }
+
+           .c_top {
+             /*  width: 200px;
+               height: 200px;*/
+             /*  margin: auto;*/
+               /*background: url("img/Button-White-Large.png") no-repeat 50%/70% rgba(0, 0, 0, 0.1);*/
+               color: #69ca62;			/*-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;旋转线颜色&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;*/
+               box-shadow: inset 0 0 0 1px rgba(105, 202, 98, 0.5);			/*&#45;&#45;&#45;&#45;&#45;&#45;旋转线内框线&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;*/
+           }
+           .c_top:before, .c_top:after {
+               content: '';
+               z-index: 10000;
+               margin: -5%;
+               box-shadow: inset 0 0 0 2px;			/*&#45;&#45;&#45;&#45;&#45;&#45;旋转线-&#45;&#45;&#45;&#45;&#45;&#45;*/
+               animation: clipMe 8s linear infinite;
+           }
+           .c_top::before {
+               animation-delay: -4s;
+           }
+           /*.bb:hover::after, .bb:hover::before {
+             background-color: rgba(255, 0, 0, 0.3);
+           }*/
+
+           @keyframes clipMe {
+               0%, 100% {
+                   clip: rect(0px, 220.0px, 2px, 0px);
+               }
+               25% {
+                   clip: rect(0px, 2px, 220.0px, 0px);
+               }
+               50% {
+                   clip: rect(218.0px, 220.0px, 220.0px, 0px);
+               }
+               75% {
+                   clip: rect(0px, 220.0px, 220.0px, 218.0px);
+               }
+           }
+         /*  html,
+           body {
+               height: 100%;
+           }
+
+           body {
+               position: relative;
+               background-color: #0f222b;
+           }*/
+
+           /**,
+           *::before,
+           *::after {
+             box-sizing: border-box;
+           }*/
+       </style>-->
+    <style>
+        /*
+    *说明：屏幕四周留1%空间,header与main之间留2%的空间，，mian内部的div之间四周margin=1.5%
+    *       头部header和main，参见css设置，，，*** .cover 为添加的div作为文字的蒙版
+    *       各模块外的div有圆角、背景、 阴影   border-radius: 8px;
+    *             上面三个div   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    *                              backgroundColor: 'rgba(255,255,255,0.6)',
+    *             上面三个div   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    *                              backgroundColor: 'rgba(255,255,255,0.3)',
+    *
+    *       各个模块图形标题的位置      top: '1%',    left: '2%',
+    *          文字样式  textStyle: {fontSize: 16, color: '#4c4c4c', fontWeight: 'bold'}
+    *           除标题外文字调到最小，或自己调整合适就行
+    *           文字颜色主要为    color: '#4c4c4c'
+    */
+
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            /*background:linear-gradient(#f1f1f1, #ffffff);*/
+            box-sizing: border-box;
+        }
+
+        .header {
+            width: 98%;
+            height: 8%;
+            margin-left: 1%;
+            margin-right: 1%;
+            text-align: center;
+            font-size: 26px;
+            line-height: 300%;
+            /*color: #6a6a6a;*/
+            position: absolute;
+            top: 1%;
+            left: 0;
+            color: #fff;
+            /*border: 1px solid #000;*/
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#e2e2e2, #a0a0a0, #e2e2e2);
+            background-color: #000000;
+        }
+
+        .header .cover {        /*--------添加的div,作为文字蒙版-------*/
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            background: linear-gradient(to bottom, black 0%, transparent 50%, black);
+            opacity: 0.5;
+        }
+
+        .main {
+            width: 98%;
+            height: 89%;
+            margin-left: 1%;
+            margin-right: 1%;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            /*background: linear-gradient(#ededed, #ffffff);*/
+            background: linear-gradient(#acacad 1%, #6e6e6e 5%, #79797a 10%, #fdfdfe);
+        }
+
+        .left {
+            width: 30%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*border-right: 1px dashed #9f9f9f;*/
+        }
+
+        .center {
+            width: 40%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 30%;
+            /*border-right: 1px dashed #9f9f9f;*/
+        }
+
+        .right {
+            width: 30%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 70%;
+        }
+
+        .l_top, .c_top, .r_top {
+            width: 97%;
+            height: 48%;
+            margin: 1%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*border-bottom: 1px dashed #9f9f9f;*/
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+
+        .c_top {
+            height: 48%;
+            margin-left: 1%;
+            margin-right: 1%;
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
+
+        .l_bot, .c_bot, .r_bot {
+            width: 97%;
+            height: 48%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin: 1%;
+            /*border: 1px solid #38dd42;*/
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .l_top,.l_bot, .c_top, .c_bot{
+            margin-left: 1.5%;
+        }
+
+        .r_bot {
+            /*background-Color: #9f9f9f;*/
+            background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)
+
+        }
+
+        .c_bot_l, .c_bot_c, .c_bot_r {
+            width: 33%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            /*   background-color: #d1ff24;*/
+        }
+
+        .c_bot_c {
+            width: 36%;
+            left: 33%
+        }
+
+        .c_bot_r {
+            width: 31%;
+            left: 69%
+        }
+
+        .tooltip {
+            position: absolute;
+            width: auto;
+            height: auto;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .5);
+            border: 1px solid #9d9d9d;
+            opacity: 0;
+        }
+
+        /*  .line_bot, .line_bot1 {
+              position: absolute;
+              top: 50%;
+              left: 8%;
+              width: 84%;
+              height: 1px;
+              border-bottom: 1px dashed #9f9f9f;
+          }
+
+          .line_bot1 {
+              left: 6%;
+              width: 88%;
+          }
+
+          .line_r1, .line_r2 {
+              position: absolute;
+              top: 4%;
+              left: 30%;
+              width: 1px;
+              height: 92%;
+              !*background-color: #090909;*!
+              border-right: 1px dashed #9f9f9f;
+          }
+
+          .line_r2 {
+              left: 69.8%;
+
+          }*/
+
+        /*
+                #r_bot_d3{
+                    font-weight: bold;
+                    font-size: 16px;
+                    font-family: sans-serif;
+                    color:#4c4c4c;
+                }*/
+
+        #header span a{
+            width: 100%;
+            height: 100%;
+            z-index: 300;
+            display: block;
+        }
+        #header span{
+            width: 2.5%;
+            height: 56%;
+            display: block;
+            /*border: 1px solid #000;*/
+            background: url("../fanhui.gif") no-repeat;
+            background-size: 100%;
+            position: absolute;
+            right: 2%;
+            top:18%;
+            z-index: 300;
+        }
+        #header span a{
+            width: 100%;
+            height: 100%;
+            z-index: 300;
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+<div class="header pre" id="header">
+    <span><a href="/e-commerce/html/index.html"></a></span>
+    <div class="cover"></div>           <!-------添加的div ,做文字蒙版-------->
+    <h3>3C类大数据可视化展示</h3>
+</div>
+<div class="main pre">
+    <div class="left" id="left">
+        <div class="l_top" id="l_top"></div>
+        <!--<div class="line_bot"></div>-->
+        <div class="l_bot" id="l_bot"></div>
+    </div>
+    <!--<div class="line_r1"></div>-->
+    <div class="center" id="center">
+        <div class="c_top" id="c_top"></div>
+        <!--<div class="line_bot1"></div>-->
+        <div class="c_bot" id="c-bot">
+            <div class="c_bot_l" id="c_bot_l"></div>
+            <div class="c_bot_c" id="c_bot_c"></div>
+            <div class="c_bot_r" id="c_bot_r"></div>
+        </div>
+    </div>
+    <!--<div class="line_r2"></div>-->
+    <div class="right" id="right">
+        <div class="r_top" id="r_top"></div>
+        <!--<div class="line_bot"></div>-->
+
+        <div class="r_bot" id="r_bot"></div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    //    var data=['服装鞋帽','小家电','通讯产品','家具百货','化妆个护','IT产品','数码家电','大宗家电','家装','医药保健','孕婴童商品','蛋糕鲜花','珠宝配饰']
+    //    var data = [13.7, 15.0, 17.8, 18.7, 19.8, 20.8, 23.7, 25.2, 30.1, 35.4, 41.5, 42.2, 43.3, 60.3];
+    /* var data = [['服装鞋帽', 63.3], ['小家电', 43.3], ['通讯产品', 42.2], ['家具百货', 41.5] ['化妆个护', 35.4], ['IT产品', 35.4], ['数码家电', 30.1],
+     ['大宗家电', 25.2], ['家装', 20.8],['医药保健 ',19.8], ['孕婴童商品', 18.7], ['蛋糕鲜花', 17.8], ['生鲜', 15.0], [' 珠宝配饰', 13.7]]*/
+    drawBar();
+    function drawBar() {
+        var charts = echarts.init(document.getElementById("l_top"));
+        var option = {
+            /*  backgroundColor: '#ffffff',*/
+//            backgroundColor: 'rgba(255,255,255,0.6)',
+            backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+
+            title: {
+                text: '2017年中国网购用户实物类网购品类分布',
+                top: '1%',
+                left: '2%',
+                textStyle: {fontSize: 16, color: '#fff', fontWeight: 'bold'}
+//                backgroundColor: 'linear-gradient(#6e6e6e, #a0a0a0, #707070)',
+//                backgroundColor: ' #000000',
+            },
+            tooltip: {
+                trigger: 'axis',        //触发类型，柱状区域
+                textStyle: {fontSize: 12, color: '#fff'},
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: function (params) {
+                    var text = params[0].name;
+                    var values = params[0].data;
+                    return '品类' + '：' + text + '<br/>' + '占比' + ' : ' + values + "%";
+                }
+            },
+            grid: {
+                top: "14%",
+                left: '3%',
+                right: '4%',
+                bottom: '0',
+                containLabel: true
+            },
+            yAxis: [
+                {
+                    axisLabel: {
+                        interval: 0          /*---0强制显示所有标签，1隔一个标签显示----*/
+                    },
+                    splitLine: {show: false},
+                    type: 'category',
+                    //                    data: ['服装鞋帽','小家电','通讯产品','家具百货','化妆个护','IT产品','数码家电','大宗家电','家装','医药保健','孕婴童商品','蛋糕鲜花','珠宝配饰'],
+                    data: ['珠宝配饰', '生鲜', '蛋糕鲜花', '孕婴童商品', '医药保健', '家装', '大宗家电', '数码家电', 'IT产品', '化妆个护', '家具百货', '通讯产品', '小家电', '服装鞋帽'],
+                    axisTick: {
+                        show: false
+                    }
+                }
+            ],
+            xAxis: [
+                {
+                    show: false,
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '直接访问',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            textStyle: {         //文字颜色，最有效的方式
+                                color: '#4c4c4c'
+                            },
+                            fontSize: 20,
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                 /*   animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },*/
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx=80;
+                        return idx * 100;
+                    },
+                    itemStyle: {            //色彩渐变
+                        normal: {
+                            color: '#abcf39',
+                            shadowColor: 'rgba(0, 0, 0, 0.4)',
+                            shadowBlur: 5,
+                            shadowOffsetX: -5,
+                            shadowOffsetY: -3
+                        }
+                    },
+                    type: 'bar',
+                    barWidth: '60%',
+//                                        data: [60.3,43.3,42.2,41.5,35.4,30.1,25.2,23.7,20.8,19.8,18.7,17.8,15.0,13.7]
+                    data: [13.7, 15.0, 17.8, 18.7, 19.8, 20.8, 23.7, 25.2, 30.1, 35.4, 41.5, 42.2, 43.3, 60.3]
+                }
+            ]
+        };
+        charts.setOption(option);
+        window.addEventListener("resize", function () {
+            charts.resize();
+        });
+    }
+
+    /*------------------------------中间上  地图-------------------------------------*/
+    /*  var datain = [
+     {name: '黑龙江', value: 8570}, {name: '吉林', value: 7293}, {name: '辽宁', value: 7893}, {name: '内蒙古', value: 7524},
+     {name: '北京', value: 63204}, {name: '天津', value: 25593}, {name: '河北', value: 16500}, {name: '山东', value: 17635},
+     {name: '江苏', value: 26558}, {name: '浙江', value: 26916}, {name: '上海', value: 52339}, {name: '福建', value: 25828},
+     {name: '广东', value: 31783}, {name: '海南', value: 11628}, {name: '广西', value: 9503}, {name: '贵州', value: 7138},
+     {name: '云南', value: 10286}, {name: '湖南', value: 10037}, {name: '江西', value: 10820}, {name: '湖北', value: 17706},
+     {name: '安徽', value: 14653}, {name: '河南', value: 14575}, {name: '山西', value: 7836}, {name: '陕西', value: 9857},
+     {name: '宁夏', value: 5217}, {name: '甘肃', value: 9847}, {name: '新疆', value: 6996}, {name: '青海', value: 6088},
+     {name: '四川', value: 12361}, {name: '重庆', value: 10229}, {name: '西藏', value: 8234} /!*{name: '香港', value: 0},
+     {name: '澳门', value: 0}, {name: '台湾', value: 0}*!/
+     ];
+     /!*  var i=0;
+     setInterval(function () {
+     if(i===9){
+     i=0
+     }
+     console.log(i);
+     var year=['shiqi','shiuqu','shiliu','shisi','shisan','shier','shiyi','shi','jiu','ba'];
+     var sql="SELECT  dataName as name,"+year[i]+" as value FROM guomap";
+     $.ajax({
+     type:'get',
+     url:'http://localhost:8080/ajaxsys/o.do',
+     data:{'sql':sql},
+     success:function (datain) {
+     console.log(datain);
+
+     drawMap(datain);
+     }
+     });
+     i++;
+     },2000);*!/
+     drawMap(datain);
+     function drawMap(datain) {
+     var myecharts = echarts.init(document.getElementById("c_top"));
+     var option =
+     {
+     title: {
+     text: '各省网购消费规模',
+     top: '4%',
+     textStyle: {
+     color: "#ffffff",
+     fontWeight: 100
+     }
+     },
+     tooltip: {
+     trigger: 'item'
+     },
+     grid: {
+     left: '3%',
+     right: '4%',
+     bottom: 0,
+     top: 0,
+     containLabel: true
+     },
+     layoutCenter: ['50%', '50%'],
+     // 如果宽高比大于 1 则宽度为 100，如果小于 1 则高度为 100，保证了不超过 100x100 的区域
+     layoutSize: '130%',        //数值设置地图的大小
+     visualMap: {
+     show: true,
+     type: 'piecewise',       //分段显示
+     showLabel: false,     //显示文本
+     splitNumber: 8,      //分段8段
+     maxOpen: true,       //开放最大值，多出 >max项
+     precision: 0,        //数据扩展的小数精度
+     itemWidth: 20,
+     itemHeight: 10,
+     itemGap: 8,      //各段间距
+     min: 0,
+     max: 20000,
+     left: '10%',
+     bottom: '8%',
+     text: ['高', '低'],           // 文本，默认为数值文本
+     textStyle: {color: "#181818"},
+     calculable: true,
+     color: ['#10289f', '#5db2b9', '#d1fffd']     //
+     },
+     toolbox: {
+     show: true,
+     orient: 'vertical',
+     left: 'right',
+     top: 'center',
+     feature: {
+     dataView: {readOnly: false},
+     restore: {},
+     saveAsImage: {}
+     }
+     },
+     series: [
+     {
+     name: '投诉量',
+     type: 'map',
+     mapType: 'china',
+     roam: false,
+     label: {
+     normal: {
+     show: true,
+     textStyle: {
+     color: "#403e31"
+     }
+     },
+     emphasis: {
+     show: true
+     }
+     },
+     data: datain
+     /!* [
+     {name: '黑龙江', value: 8570},
+     {name: '吉林',  value: 7293},
+     {name: '辽宁',  value: 7893},
+     {name: '内蒙古', value: 7524},
+     {name: '北京', value: 63204},
+     {name: '天津', value: 25593},
+     {name: '河北', value: 16500},
+     {name: '山东', value: 17635},
+     {name: '江苏', value: 26558},
+     {name: '浙江', value: 26916},
+     {name: '上海', value: 52339},
+     {name: '福建', value: 25828},
+     {name: '广东', value: 31783},
+     {name: '海南', value: 11628},
+     {name: '广西', value: 9503},
+     {name: '贵州', value: 7138},
+     {name: '云南', value: 10286},
+     {name: '湖南', value: 10037},
+     {name: '江西', value: 10820},
+     {name: '湖北', value: 17706},
+     {name: '安徽', value: 14653},
+     {name: '河南', value: 14575},
+     {name: '山西', value: 7836},
+     {name: '陕西', value: 9857},
+     {name: '宁夏', value: 5217},
+     {name: '甘肃', value: 9847},
+     {name: '新疆', value: 6996},
+     {name: '青海', value: 6088},
+     {name: '四川', value: 12361},
+     {name: '重庆', value: 10229},
+     {name: '西藏', value: 8234 },
+     {name: '香港', value: 0},
+     {name: '澳门', value: 0},
+     {name: '台湾', value: 0}
+     ]*!/
+     }
+     ]
+     };
+     myecharts.setOption(option);
+     window.addEventListener("resize", function () {
+     myecharts.resize();
+     });
+     }
+     */
+    /*
+     drawMap();
+     function drawMap(){
+     var charts=echarts.init(document.getElementById("c_top"));
+     var option =
+     {
+     timeline:{
+     data:[
+     '2002-01-01','2003-01-01','2004-01-01','2005-01-01','2006-01-01',
+     '2007-01-01','2008-01-01','2009-01-01','2010-01-01','2011-01-01'
+     ],
+     label : {
+     formatter : function(s) {
+     return s.slice(0, 4);
+     }
+     },
+     autoPlay : true,
+     playInterval : 1000
+     },
+     options:[
+     {
+     title : {
+     'text':'2002全国宏观经济指标',
+     'subtext':'数据来自国家统计局'
+     },
+     tooltip : {'trigger':'item'},
+     toolbox : {
+     'show':true,
+     'feature':{
+     'mark':{'show':true},
+     'dataView':{'show':true,'readOnly':false},
+     'restore':{'show':true},
+     'saveAsImage':{'show':true}
+     }
+     },
+     dataRange: {
+     min: 0,
+     max : 53000,
+     text:['高','低'],           // 文本，默认为数值文本
+     calculable : true,
+     x: 'left',
+     color: ['orangered','yellow','lightskyblue']
+     },
+     series : [
+     {
+     'name':'GDP',
+     'type':'map',
+     'data': dataMap.dataGDP['2002']
+     }
+     ]
+     },
+     {
+     title : {'text':'2003全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2003']}
+     ]
+     },
+     {
+     title : {'text':'2004全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2004']}
+     ]
+     },
+     {
+     title : {'text':'2005全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2005']}
+     ]
+     },
+     {
+     title : {'text':'2006全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2006']}
+     ]
+     },
+     {
+     title : {'text':'2007全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2007']}
+     ]
+     },
+     {
+     title : {'text':'2008全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2008']}
+     ]
+     },
+     {
+     title : {'text':'2009全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2009']}
+     ]
+     },
+     {
+     title : {'text':'2010全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2010']}
+     ]
+     },
+     {
+     title : {'text':'2011全国宏观经济指标'},
+     series : [
+     {'data': dataMap.dataGDP['2011']}
+     ]
+     }
+     ]
+     };
+     charts.setOption(option);
+     /!* window.addEventListener("resize",function(){
+     charts.resize();
+     });*!/
+     }*/
+    /*------------------------------中间上  地图2----------------*/
+    drawMap();
+    function drawMap() {
+        var data = [
+            {name: '黑龙江', value: 6}, {name: '吉林', value: 12}, {name: '辽宁', value: 8}, {name: '内蒙古', value: 8},
+            {name: '北京', value: 35}, {name: '天津', value: 28}, {name: '河北', value: 12}, {name: '山东', value: 30},
+            {name: '江苏', value: 24}, {name: '浙江', value: 30}, {name: '上海', value: 32}, {name: '福建', value: 20},
+            {name: '广东', value: 25}, {name: '海南', value: 18}, {name: '广西', value: 14}, {name: '贵州', value: 12},
+            {name: '云南', value: 16}, {name: '湖南', value: 17}, {name: '江西', value: 20}, {name: '湖北', value: 16},
+            {name: '安徽', value: 18}, {name: '河南', value: 15}, {name: '山西', value: 16}, {name: '陕西', value: 17},
+            {name: '宁夏', value: 5}, {name: '甘肃', value: 13}, {name: '新疆', value: 3}, {name: '青海', value: 3},
+            {name: '四川', value: 11}, {name: '重庆', value: 12}, {name: '西藏', value: 3}
+        ];
+        var data2 = [], data3 = [], data4 = [], data5 = [], data6 = [], data7 = [], data8 = [], data9 = [];
+        for (var i = 0; i < data.length; i++) {
+            data2.push({name: data[i].name, value: data[i].value * 1.5});
+            data3.push({name: data[i].name, value: data[i].value * 2});
+            data4.push({name: data[i].name, value: data[i].value * 3.5});
+            data5.push({name: data[i].name, value: data[i].value * 4});
+            data6.push({name: data[i].name, value: data[i].value * 6});
+            data7.push({name: data[i].name, value: data[i].value * 5.5});
+            data8.push({name: data[i].name, value: data[i].value * 7});
+            data9.push({name: data[i].name, value: data[i].value * 9});
+
+        }
+        var myecharts = echarts.init(document.getElementById("c_top"));
+        myecharts.setOption({
+            baseOption: {
+//                backgroundColor: 'rgba(255,255,255,0.6)',
+                backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+                timeline: {
+                    axisType: 'category',
+                    bottom: '0',
+                    left: '15%',
+                    right: '15%',
+                    autoPlay: true,
+                    currentIndex: 0,
+                    playInterval: 2000,             //时间间隔
+                    label: {normal: {color: "#95ff70", interval: 0, lineHeight: 5}},
+//                    symbol:'diamond',
+                    symbolSize: 8,               //中心图标大小
+                    lineStyle: {show: true, type: 'dashed', color: "#c6cfc5"},     //中心轴线颜色
+                    itemStyle: {
+                        normal: {color: "#8b53b7"},      //圆图标颜色
+                        emphasis: {color: "#51b7ab"}
+                    },
+                    checkpointStyle: {color: "#dd0b0f", symbolSize: 6},//『当前项』（checkpoint）的图形样式。
+                    controlStyle: {itemSize: 12},                     //控件尺寸
+                    data: ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+                },
+                tooltip: {trigger: 'item', textStyle: {fontSize: 12},
+                    formatter: function (params) {
+                        var text = params.data.name;
+                        var values = params.data.value;
+                        return text + '<br/>' + '占比' + ' : ' + values + "%";
+                    }},
+                grid: {
+                    top: '-15%',
+                    left: '0',
+                    right: '0',
+                    bottom: '8%',
+                    containLabel: true
+                },
+                layoutCenter: ['50%', '50%'],
+                // 如果宽高比大于 1 则宽度为 100，如果小于 1 则高度为 100，保证了不超过 100x100 的区域
+                layoutSize: '110%',        //数值设置地图的大小
+                visualMap: {
+                    show: true,
+                    type: 'piecewise',       //分段显示
+                    showLabel: false,     //显示文本
+                    splitNumber: 5,      //分段8段
+                    maxOpen: true,       //开放最大值，多出 >max项
+                    precision: 0,        //数据扩展的小数精度
+                    itemWidth: '15%',
+                    itemHeight: '10%',
+                    itemGap: 2,      //各段间距
+                    min: 0,
+                    max: 150,
+                    left: '5%',
+                    bottom: '3%',
+                    text: ['高', '低'],           // 文本，默认为数值文本
+                    textStyle: {color: "#181818", fontSize: 8},
+                    calculable: true,
+                    color: ['#5ea845', '#a6ff54', '#f3ffdd']     //
+                },
+                series: [
+                    {
+                        name: '占比分布',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        label: {
+                            normal: {
+                                show: false,
+                                textStyle: {
+                                    color: "#19222b",
+                                    fontSize: 8
+                                }
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        }
+                        /*   data: [
+                         {name: '黑龙江', value: 6},{name: '吉林', value: 12}, {name: '辽宁', value: 8}, {name: '内蒙古', value: 8},
+                         {name: '北京', value: 30}, {name: '天津', value: 23}, {name: '河北', value: 10}, {name: '山东', value: 35},
+                         {name: '江苏', value: 24}, {name: '浙江', value: 26}, {name: '上海', value: 32}, {name: '福建', value: 18},
+                         {name: '广东', value: 25}, {name: '海南', value: 18}, {name: '广西', value: 23}, {name: '贵州', value: 18},
+                         {name: '云南', value: 16}, {name: '湖南', value: 17}, {name: '江西', value: 20}, {name: '湖北', value: 16},
+                         {name: '安徽', value: 13}, {name: '河南', value: 15}, {name: '山西', value: 16}, {name: '陕西', value: 17},
+                         {name: '宁夏', value: 5},  {name: '甘肃', value: 17}, {name: '新疆', value: 6}, {name: '青海', value: 8},
+                         {name: '四川', value: 11}, {name: '重庆', value: 12}, {name: '西藏', value: 4}
+                         ]*/
+
+                    }
+                ]
+            },
+            options: [
+                { // 这是'2009' 对应的 option
+                    title: {
+                        text: '2009年3C交易占比分布',
+                        top:'1%',
+                        left:'1.3%',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data
+
+                    }]
+                },
+                { // 这是'2010' 对应的 option
+                    title: {
+                        text: '2010年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data2
+
+                    }]
+                },
+                { // 这是'2011' 对应的 option
+                    title: {
+                        text: '2011年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data3
+
+                    }]
+                },
+                { // 这是'2012' 对应的 option
+                    title: {
+                        text: '2012年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data4
+                    }]
+                },
+                { // 这是'2013' 对应的 option
+                    title: {
+                        text: '2013年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data5
+
+                    }]
+                },
+                { // 这是'2014' 对应的 option
+                    title: {
+                        text: '2014年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data6
+
+                    }]
+                },
+                { // 这是'2015-08' 对应的 option
+                    title: {
+                        text: '2015年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data7
+
+                    }]
+                },
+                { // 这是'2014-08' 对应的 option
+                    title: {
+                        text: '2016年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data8
+
+                    }]
+                },
+                { // 这是'2017-08' 对应的 option
+                    title: {
+                        text: '2017年3C交易占比分布',
+                        textStyle: {align: 'center', fontSize: 16, color: '#fff', fontWeight: 'bold'}
+                    },
+                    series: [{
+                        data: data9
+
+                    }]
+                }
+            ]
+
+        });
+
+        window.addEventListener("resize", function () {
+            myecharts.resize();
+        });
+    }
+    /*----------------------------------右侧上  堆叠柱图  ---------------------------------------------*/
+    drawR_topZhu();
+    function drawR_topZhu() {
+        var myecharts = echarts.init(document.getElementById("r_top"));
+        var option = {
+            backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+            title: {
+                text: '2016Q1-2017Q2中国B2C购物市场份额变化情况',
+                top: '1%',
+                left: '2%',
+                textStyle: {fontSize: 16, color: '#fff', fontWeight: 'bold'}
+            },
+            grid: {         //坐标系位置
+                top: '26%',
+                left: '3%',
+                right: '6%',
+                bottom: '2.5%',
+                containLabel: true
+            },
+            tooltip: {      //鼠标移动提示框
+                trigger: 'axis',
+                textStyle: {fontSize: 10},
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+
+            legend: {          //图形组件
+                show: true,
+                itemGap: 4,          //图例之间距离
+                itemWidth: 14,            //图例标记的宽、高
+                itemHeight: 9,
+                top: '10%',
+                left: '5%',
+                right: '10%',
+                data: ['天猫', '京东', '苏宁易购', '唯品会', '国美在线', '1号店', '当当网', '亚马逊中国']
+            },
+            calculable: true,
+            yAxis: [
+                {
+                    type: 'value',
+                    axisLabel: {formatter: '{value} %'},
+                    splitLine:{show: false}
+                }
+            ],
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['2016Q1', '2016Q2', '2016Q3', '2016Q4', '2017Q1', '2017Q2']
+                }
+            ],
+            series: [
+                {
+                    name: '天猫',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {normal: {color: '#AFD332'}},
+                    label: {
+                        normal: {
+                            show: true, position: 'inside',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+
+                    data: [59.7, 57.2, 57.1, 64.9, 58.8, 55.7]
+                },
+                {
+                    name: '京东',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {normal: {color: '#8cc143'}},
+                    label: {
+                        normal: {
+                            show: true, position: 'inside',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [19.4, 20.9, 20.5, 18.0, 22.9, 25.2]
+                },
+                {
+                    name: '苏宁易购',
+                    type: 'bar',
+                    stack: '总量',
+                    barWidth: '65%',
+                    itemStyle: {normal: {color: '#e0ec33'}},
+                    label: {
+                        normal: {
+                            show: true, position: 'inside',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [3.4, 3.9, 4.9, 3.5, 3.5, 4.4]
+                },
+                {
+                    name: '唯品会',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {normal: {color: '#bab38f'}},
+                    data: [2.3, 2.4, 2.5, 2.3, 2.5, 2.4]
+                },
+                {
+                    name: '国美在线',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [1.8, 1.9, 1.6, 1.0, 1.1, 1.3]
+                },
+                {
+                    name: '1号店',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {normal: {color: '#64704d'}},
+                    data: [2.1, 1.9, 1.4, 0.9, 1.1, 1.2]
+                },
+                {
+                    name: '当当网',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [1.8, 1.5, 1.3, 1.1, 1.2, 1.1]
+                },
+                {
+                    name: '亚马逊中国',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {normal: {color: '#4bced1'}},
+                    data: [3.2, 3.1, 3.3, 3.1, 3.2, 3.0]
+                },
+                {
+                    name: '其他',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {normal: {color: '#20c511'}},
+                    label: {
+                        normal: {
+                            show: true, position: 'inside',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [6.3, 7.2, 7.4, 5.2, 5.5, 5.7]
+                }
+            ]
+        };
+
+        myecharts.setOption(option);
+        window.addEventListener("resize", function () {
+            myecharts.resize();
+        });
+    }
+    /*----------------------------------左侧下   柱线 ---------------------------------------------*/
+    drawline1();
+    function drawline1() {
+        var myecharts = echarts.init(document.getElementById('l_bot'));
+        var option = {
+            backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+        title: {
+                text: '2014-2018年中国网络购物市场交易规模',
+                top: '1%',
+                left: '2%',
+                textStyle: {fontSize: 16, color: '#fff', fontWeight: 'bold'}
+            },
+            tooltip: {
+                trigger: 'axis',        //提示线
+                textStyle: {fontSize: 12},
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    }
+                },
+                formatter: function (params) {      //修改提示框显示信息
+//                    console.log(params)
+                    var bar0 = params[0].seriesName;
+                    var bar1 = params[0].data;
+                    var line10 = params[1].seriesName;
+                    var line11 = params[1].data;
+                    var line20 = params[2].seriesName;
+                    var line21 = params[2].data;
+                    return bar0 + '：' + bar1 + '<br/>' + line10 + ' : ' + line11 + "%" + '<br/>' + line20 + "：" + line21 + "%";
+                }
+            },
+
+            grid: {         //坐标系位置
+                top: '15%',
+                left: '2%',
+                right: '0',
+                bottom: '15%',
+                containLabel: true
+            },
+            legend: {          //图形组件
+                show: true,
+                itemGap: 3,          //图例之间距离
+                itemWidth: 14,            //图例标记的宽、高
+                itemHeight: 9,
+//                itemGap: 10,
+                bottom: '3%',
+                data: ['网购交易规模(万亿)', '增长率(%)', '占零售总额的百分率（%）']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+            yAxis: [
+                {type: 'value', min: 0, max: 12,   splitLine:{show: false}},
+                {
+                    show: false,
+                    type: 'value',
+                    min: -200,
+                    max: 100,
+                    interval: 5,
+                    axisLabel: {formatter: '{value} %'}
+
+                }
+            ],
+            series: [
+                {
+                    name: '网购交易规模(万亿)',
+                    type: 'bar',
+                    barWidth: '70%',
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx=80;
+                        return idx * 100;
+                    },
+                    itemStyle: {            //色彩渐变
+                        normal: {
+                            barBorderRadius: [7, 7, 0, 0],
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#daffb2'
+                            },
+                                {
+                                    offset: 1,
+                                    color: '#5d8d34'
+                                }]),
+                            shadowColor: 'rgba(0, 0, 0, 0.4)',
+                            shadowBlur: 10,
+                            shadowOffsetX: -10,
+                            shadowOffsetY: -2
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true, position: 'inside',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [0.8, 1.2, 1.9, 2.8, 3.8, 5.0, 6.2, 7.5]
+                },
+                {
+                    name: '增长率(%)',
+                    type: 'line',
+                    lineStyle: {normal: {color: '#a4bf78', width: 3}},
+//                    itemStyle: {normal: {}},
+                    label: {
+                        normal: {
+                            show: true, position: 'top',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    yAxisIndex: 1,
+                    data: [70.2, 51.3, 59.4, 46.9, 36.2, 30.7, 25.4, 20.4]
+                },
+                {
+                    name: '占零售总额的百分率（%）',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    lineStyle: {normal: {color: '#11ccff', width: 3}},
+                    label: {
+                        normal: {
+                            show: true, position: 'bottom',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [4.3, 5.6, 8.0, 10.6, 12.6, 14.8, 17.1, 19.2]
+                },
+            ]
+        };
+        myecharts.setOption(option);
+        window.addEventListener("resize", function () {
+            myecharts.resize();
+        });
+    }
+    /*----------------------------------中下   柱线 ---------------------------------------------*/
+    drawC_bot_l();
+    function drawC_bot_l() {
+        var myecharts = echarts.init(document.getElementById('c_bot_l'));
+        var option = {
+            /*   backgroundColor: '#ffffff',*/
+            backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+            title: {
+                text: '2014-2018年网罗购物' + '\n' + '人均消费额及增长率',
+                top: '1%',
+                left: '2%',
+                textStyle: {align:"center",fontSize: 14, color: '#fff', fontWeight: 'bold'}
+            },
+            tooltip: {
+                trigger: 'axis',        //提示线
+                axisPointer: {type: 'cross', crossStyle: {color: '#999'}},
+                textStyle: {fontSize: 12},
+                formatter: function (params) {      //修改提示框显示信息
+//                    console.log(params)
+                    var bar0 = params[0].seriesName;
+//                    console.log(bar0)
+                    var bar1 = params[0].data;
+                    var line10 = params[1].seriesName;
+                    var line11 = params[1].data;
+                    return bar0 + '：' + bar1 + '<br/>' + line10 + ' : ' + line11 + "%"
+                }
+            },
+            grid: {         //坐标系位置
+                top: '14%',
+                left: '0',
+                right: '0',
+                bottom: '18%',
+                containLabel: true
+
+            },
+            legend: {          //图形组件
+                show: true,
+                bottom: '3%',
+                itemGap: 3,          //图例之间距离
+                itemWidth: 14,            //图例标记的宽、高
+                itemHeight: 9,
+                fontSize: 10,
+                textStyle: {
+                    fontSize: 8
+                },
+                data: ['网购人均消费（千元）', '网购人均消费增长率（%）']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisLabel: {interval: 1},
+                    data: ['2014', '2015', '2016', '2017', '2018'],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    show: false,
+                    type: 'value',
+                    min: 0,
+                    max: 25,
+                    boundaryGap: 0,
+                    nameLocation: 0,
+                    splitLine:{show: false}
+                    /*   offset:'10%'*/
+                },
+                {
+                    show: false,
+                    type: 'value',
+                    min: -100,
+                    max: 50,
+                    interval: 5,
+                    axisLabel: {formatter: '{value} %'}
+                }
+            ],
+            series: [
+                {
+                    name: '网购人均消费（千元）',
+                    type: 'bar',
+                    barWidth: '70%',
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx=80;
+                        return idx * 100;
+                    },
+                    itemStyle: {            //色彩渐变
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#daffb2'
+                            },
+                                {
+                                    offset: 1,
+                                    color: '#b1d334'
+                                }]),
+                            shadowColor: 'rgba(0, 0, 0, 0.4)',
+                            shadowBlur: 15
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true, position: 'top',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                return params.value
+                            }
+                        }
+                    },
+                    data: [7.72, 9.20, 10.83, 12.53, 14.24]
+                },
+                {
+                    name: '网购人均消费增长率（%）',
+                    type: 'line',
+                    lineStyle: {normal: {color: '#a4bf78', width: 3}},
+//                    itemStyle: {normal: {}},
+                    label: {
+                        normal: {
+                            show: true, position: 'top',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    yAxisIndex: 1,
+                    data: [23.2, 19.2, 17.6, 15.8, 13.6]
+                }
+
+            ]
+        };
+        myecharts.setOption(option);
+        window.addEventListener("resize", function () {
+            myecharts.resize();
+        });
+    }
+    /*----------------------中间---------------------*/
+    drawC_bot_c();
+    function drawC_bot_c() {
+        var myecharts = echarts.init(document.getElementById('c_bot_c'));
+        var option = {
+            /*  backgroundColor: '#ffffff',*/
+            backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+            title: {
+                text: '2014-2018年中国进口零售电' + '\n' + '商市场交易规模及增长率',
+                top: '1%',
+                left: '2%',
+                textStyle: {fontSize: 14, color: '#fff', fontWeight: 'bold'}
+            },
+            tooltip: {
+                trigger: 'axis',        //提示线
+                axisPointer: {type: 'cross', crossStyle: {color: '#999'}},
+                textStyle: {fontSize: 12, color: '#fff'},
+                formatter: function (params) {      //修改提示框显示信息
+//                    console.log(params)
+                      var bar0 = params[0].seriesName;
+//                                         console.log(bar0)
+                     var bar1 = params[0].data;
+                     var line10 = params[1].seriesName;
+                     var line11 = params[1].data;
+                    var line20 = params[2].seriesName;
+                    var line21 = params[2].data;
+                     return bar0 + '：' + bar1 + '<br/>' + line10 + ' : ' + line11 + "%"
+                }
+            },
+            grid: {         //坐标系位置
+                top: '14%',
+                left: '0',
+                right: '0',
+                bottom: '20%',
+                containLabel: true
+            },
+            legend: {          //图形组件
+                show: true,
+                bottom: '3%',
+                itemGap: 3,          //图例之间距离
+                itemWidth: 15,            //图例标记的宽、高
+                itemHeight: 10,
+                padding: 0,
+                textStyle: {
+                    fontSize: 8,
+                    lineHeight: 10
+                },
+                data: ['进口电商零售（亿元）', '进口电商零售增长率（%）', '电商零售占电商的比例（%）']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisLabel: {normal: {interval: 1, color: '#4c4c4c'}},
+                    data: ['2014', '2015', '2016', '2017', '2018'],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    show: false,
+                    type: 'value',
+                    min: 0,
+                    max: 25,
+                    boundaryGap: 0,
+                    nameLocation: 0
+                },
+                {
+                    show: false,
+                    type: 'value',
+                    min: -200,
+                    max: 120,
+                    interval: 5,
+                    axisLabel: {formatter: '{value} %'}
+                }
+            ],
+            series: [
+                {
+                    name: '进口电商零售（亿元）',
+                    type: 'bar',
+                    barWidth: '70%',
+                    itemStyle: {            //色彩渐变
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#daffb2'
+                            },
+                                {
+                                    offset: 1,
+                                    color: '#b1d334'
+                                }]),
+                            shadowColor: 'rgba(0, 0, 0, 0.4)',
+                            shadowBlur: 15
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true, position: 'top',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                return params.value
+                            }
+                        }
+                    },
+                    data: [7.72, 9.20, 10.83, 12.53, 14.24]
+                },
+                {
+                    name: '进口电商零售增长率（%）',
+                    type: 'line',
+                    lineStyle: {normal: {color: '#a4bf78', width: 3}},
+//                    itemStyle: {normal: {}},
+                    label: {
+                        normal: {
+                            show: true, position: 'top',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    yAxisIndex: 1,
+                    data: [8.6, 13.2, 19.0, 23.2, 27.9]
+                },
+                {
+                    name: '电商零售占电商的比例（%）',
+                    type: 'line',
+                    lineStyle: {normal: {color: '#11ccff', width: 3}},
+                    label: {
+                        normal: {
+                            show: true, position: 'top',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    yAxisIndex: 1,
+                    data: [60.0, 111.9, 85.6, 55.3, 54.1]
+                }
+            ]
+        };
+        myecharts.setOption(option);
+        window.addEventListener("resize", function () {
+            myecharts.resize();
+        });
+    }
+    /*---------------------右边--------------------*/
+    drawC_bot_r();
+    function drawC_bot_r() {
+        var charts = echarts.init(document.getElementById("c_bot_r"));
+        var option = {
+            backgroundColor: 'linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9)',
+            title: {
+                text: '2015年中国出口跨境电' + '\n' + '商卖家品类分布',
+                top: '1%',
+                left: '2%',
+                textStyle: {fontSize: 14, color: '#fff', fontWeight: 'bold'}
+            },
+            tooltip: {
+                trigger: 'axis',        //触发类型，柱状区域
+                textStyle: {fontSize: 12, color: '#fff'},
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: function (params) {
+                    var text = params[0].name;
+                    var values = params[0].data;
+                    return '品类' + '：' + text + '<br/>' + '占比' + ' : ' + values + "%";
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: [
+                {
+                    axisLabel: {interval: 0}, /*---0强制显示所有标签，1隔一个标签显示----*/
+                    splitLine: {show: false},
+                    type: 'category',
+                    //                    data: ['服装鞋帽','小家电','通讯产品','家具百货','化妆个护','IT产品','数码家电','大宗家电','家装','医药保健','孕婴童商品','蛋糕鲜花','珠宝配饰'],
+                    data: ['其他', '安全监控', '灯光照明', '汽车配件', '母婴玩具', '鞋帽箱包', '家居园艺',
+                        '珠宝首饰', '健康美容', '户外用品', '服装服饰', '3C电子'],
+                    axisTick: {show: false}
+                }
+            ],
+            xAxis: [
+                {
+                    show: false,
+                    min: 0,
+                    max: 50,
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '直接访问',
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx=80;
+                        return idx * 100;
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            textStyle: {         //文字颜色，最有效的方式
+                                color: '#4c4c4c'
+                            },
+//                            fontSize: 20,
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    itemStyle: {            //色彩渐变
+                        normal: {
+                            /* barBorderRadius: [0,  3, 3,0],*/
+                            /* color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                             offset: 0,
+                             color: '#aaff66'
+                             },
+                             {
+                             offset: 1,
+                             color: '#23970d'
+                             }]),*/
+                            color: '#abcf39',
+                            shadowColor: 'rgba(0, 0, 0, 0.4)',
+                            shadowBlur: 5
+                        }
+                    },
+                    type: 'bar',
+                    barWidth: '60%',
+//                                        data: [60.3,43.3,42.2,41.5,35.4,30.1,25.2,23.7,20.8,19.8,18.7,17.8,15.0,13.7]
+                    data: [10.3, 2.2, 2.8, 3.1, 3.6, 4.5, 4.7, 6.0, 7.4, 8.5, 11.2, 35.7]
+                }
+            ]
+        };
+        charts.setOption(option);
+        window.addEventListener("resize", function () {
+            charts.resize();
+        });
+    }
+
+    /*----------------------------------右侧下    ---------------------------------------------*/
+    var dataset = {
+        name: "中国3C电商模式分布",
+        children: [
+            {
+                name: "纯电商平台",
+                children: [{"name": "淘宝网", revenue: 25},
+                    {"name": "京东", revenue: 12},
+                    {"name": "天猫", revenue: 10},
+                    {"name": "亚马逊", revenue: 8},
+                    {"name": "新蛋网", revenue: 6},
+                    {"name": "苏宁易购", revenue: 6},
+                    {"name": "国美在线", revenue: 4},
+                    {"name": "......", revenue: 3},
+                ]
+            }, {
+                name: "硬件电商平台",
+                children: [
+                    {"name": "华为商城", revenue: 18},
+                    {"name": "乐视商城", revenue: 13},
+                    {"name": "小米", revenue: 14},
+                    {"name": "......", revenue: 8}
+                ]
+            }
+        ]
+    };
+    window.addEventListener("resize", function () {             //-----------------屏幕监听，动态改变-------------------------------
+        drawTree('r_bot', dataset);
+    });
+    drawTree('r_bot', dataset);
+    function drawTree(divname, dataset) {
+        d3.select('#' + divname).select("svg").remove();
+        var _swidth = $("#" + divname).innerWidth();
+        var _sheight = $("#" + divname).innerHeight();
+
+        var top1 = Number($("#header").innerHeight()) + Number($("#r_top").innerHeight());
+        var left1 = Number($("#left").innerWidth()) + Number($("#center").innerWidth());
+//        console.log(top1,left1);
+        /*  console.log(_svg._groups[0][0].clientWidth)
+         console.log(_svg._groups[0][0].clientHeight)*/
+
+
+        //构造数据层次布局
+        var _root = d3.hierarchy(dataset);
+        _root.sum(function (d) {
+            return d.revenue
+        })
+        /*-----------此部分为使相同父级的显示相同颜色--------------------------------*/
+            .eachBefore(function (d) {
+                d.data.parentname = d.parent ? d.parent.data.name : d.data.name;
+            });
+        //定义颜色序数比例尺
+        var _color = d3.scaleOrdinal()
+            .domain(["电视", "空调"])
+            .range(["#b1d334", "#64af44"]);
+        /*-----------------------------------------------------------------------*/
+        //定义树形图生成器
+        var _treemap = d3.treemap()
+            .tile(d3.treemapBinary)
+            .size([_swidth * 0.8, _sheight * 0.8])
+            .paddingInner("2");
+        //    生成树图数据,传入层级布局数据
+        var _treedata = _treemap(_root).leaves();
+
+        //创建svg图形------->在已存在的区域内添加svg,g组，先选择后添加即可
+        var _svg = d3.select("#" + divname)
+            .append("svg")
+            .attr("id", "treeSvg")
+            .attr("width", _swidth)
+            .attr("height", _sheight)
+//            .attr("transform", "translate(" + _margin.left + "," + _margin.top + ")");
+        //创建矩形图------->通过数据添加不存在的图形，，后添加即可
+        //标题开始
+
+        _g0 = _svg.append("g");
+        _g0.append("text")
+            .attr("x", _swidth * 0.03)
+            .attr("y", _sheight * 0.08)
+            /*   .attr('id',"r_bot_d3")*/
+            .attr("font-size", '16')
+            .attr("font-weight", "bold")
+            .attr("font-family", "sans-serif")
+            .attr("fill", "#fff")
+            .text("中国3C电商企业模式分布");
+        _g1 = _svg.append('g')
+            .attr("transform", "translate(" + _swidth * 0.1 + "," + _sheight * 0.15 + ")");
+
+        var _tooltipdiv = d3.select("#" + divname)
+            .append("div")
+            .attr("class", "tooltip");
+
+
+        _g1.selectAll("rect")          //先选择矩形标签，
+            .data(_treedata)            //然后把数据加到矩形上
+            .enter()                    //保留数据等待添加标签
+            .append("rect")             //在有数据的地方添加标签（矩形）
+            .attr("x", function (d) {
+                return d.x0;
+            })
+            .attr("y", function (d) {
+                return d.y0
+            })
+            .attr("width", function (d) {
+                return d.x1 - d.x0;
+            })
+            .attr("height", function (d) {
+                return d.y1 - d.y0
+            })
+            .attr("fill", function (d, i) {
+//            return d3.schemeCategory10[i]     //此为所有部分颜色不同
+                return _color(d.data.parentname)    //此部分为使相同父级的显示相同颜色
+            })
+            .on("mouseover", function (d, i) {                          //鼠标移入事件
+                _tooltipdiv.style("top", d3.event.clientY - top1 - 30 + "px")
+                    .style("left", d3.event.clientX - left1 - 10 + "px")
+                    .style("opacity", 1)
+                    .html(d.data.name);
+            })
+            .on("mousemove", function (d, i) {                       //鼠标移动事件
+                _tooltipdiv.style("top", d3.event.pageY - top1 - 30 + "px")
+                    .style("left", d3.event.pageX - left1 - 10 + "px")
+            })
+            .on("mouseout", function () {                      //鼠标移出事件
+                _tooltipdiv.style("opacity", 0)
+            })
+
+
+        _g1.selectAll("text")
+            .data(_treedata)
+            .enter()
+            .append("text")
+            .attr("x", function (d) {
+                return d.x0;
+            })
+            .attr("y", function (d) {
+                return d.y0
+            })
+            .text(function (d, i) {
+                return d.data.name
+            })
+            .style("font-size", "12px")
+            .attr("fill", "#fff")
+            .attr("text-anchor", "middle")
+            .attr("dy", function (d) {
+                return (d.y1 - d.y0) / 2
+            })
+            .attr("dx", function (d) {
+                return (d.x1 - d.x0) / 2;
+            });
+
+
+    }
+    /* function drawPack(divname,dataset){
+     var _swidth=$("#"+divname).innerWidth();
+     var _sheight=$("#"+divname).innerHeight();
+     //构造数据层次布局
+     var _root = d3.hierarchy(dataset)
+     .sum(function (d) {
+     return d.revenue
+     });
+     //   console.log(_root)
+     //基于布局生成器将hierarchy数据生成含有形状重要参数的hierarchy数据
+     var _packcraetor = d3.pack()    //pack打包图生成器
+     .size([_swidth, _sheight])           //属性
+     .padding(10)
+     var _packdata = _packcraetor(_root)     //为打包图生成器传入数据
+     console.log(_packdata)
+     //生成数组，包含所有后代数组，给变量_allnodes,即所有节点
+     var _allnodes = _packdata.descendants();
+     //        console.log(_allnodes)
+     //定义画布
+
+     var _svg = d3.select("#"+divname)
+     .append("svg")
+     .attr("width", _swidth)
+     .attr("height", _sheight)
+     //添加每一个圆的G组
+     var _gcircle = _svg.selectAll("g")
+     .data(_allnodes)
+     .enter()
+     .append("g")
+     .attr("transform", function (d) {
+     return "translate(" + d.x + "," + d.y + ")"
+     });
+     //在每个G组内添加圆
+     _gcircle.append("circle")
+     .attr("cx", 0)
+     .attr("cy", 0)
+     .attr("r", function (d) {
+     return d.r
+     })
+     .attr("id", function (d) {
+     return d.height === 0 ? "leaf" : ""
+     })
+     /!*    .style("fill","rgba(31,119,180,0.25)")
+     .style("stroke","rgb(31,119,180)")
+     .style("stroke-width:","1px");*!/
+
+     /!*  circle{
+     fill:rgba(31,119,180,0.25);
+     stroke:rgb(31,119,180);
+     stroke-width: 1px;
+     }*!/
+
+
+
+     //在每个G组中添加文本
+     _gcircle.append("text")
+     .attr("x", 0)
+     .attr("y", 0)
+     .style("text-anchor", "middle")
+     .text(function (d) {
+     return d.children ? "" : d.data.name;
+     })
+
+     //在每个G组的圆上加提示文本
+     _gcircle.append("title")
+     .text(function (d) {
+     return d.data.name + '\n销售额：' + d.value;
+     })
+
+     }*/
+
+</script>

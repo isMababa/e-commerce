@@ -1,0 +1,237 @@
+
+/********全局样式***************8*/
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei", "微软雅黑", SimHei, "黑体", "Hiragino Sans GB", STHeiTi, sans-serif;
+    box-sizing: border-box;
+}
+body{
+
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+   /* background-image: linear-gradient(to top, #fff,#5F5F5F);*/
+}
+/******头部***********/
+.header{
+    width: 100%;
+    height: 8%;
+    text-align: center;
+    font-size: 26px;
+    line-height: 250%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(#e2e2e2, #a0a0a0, #e2e2e2);
+    /*background-color: #000000;*/
+}
+.header .cover {        /*--------添加的div,作为文字蒙版-------*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, black 0%, transparent 50%, black);
+    opacity: 0.5;
+    z-index: 122;
+}
+
+
+.header a{
+    position: absolute;
+    right:1%;
+    top: 7%;
+    width: 30px;
+    height: 30px;
+
+
+}
+.header a img{
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+
+.L_coniner{
+    width: 99%;
+    height: 99%;
+    position: absolute;
+    margin: 0.5% 0.5% 0 0.5% ;
+}
+.L_coniner .L_title1{
+    width: 100%;
+    height: 8%;
+    margin-bottom: 0.5%;
+    background-image: linear-gradient(to top, #cccccc,#5F5F5F);
+    border-radius: 8px;
+}
+/********主体样式***************8*/
+.L_coniner .L_main{
+    display: flex;
+    direction: ltr;
+    width: 100%;
+    height: 91%;
+    border-radius: 8px;
+  /* background-image: linear-gradient(to top, #fff,#5F5F5F);*/
+    background-image: linear-gradient(to top, #FCFCFD,#ADADAE);
+
+}
+/********左边***************8*/
+.L_coniner .L_main .L_left{
+    width: 60%;
+    height: 100%;
+}
+#L_letf_top {
+    width: 100%;
+    height: 95%;
+    border-radius: 8px;
+
+
+}
+#L_letf_bottom{
+    width: 100%;
+    height: 90%;
+
+}
+
+.L_coniner .L_main .L_left .L_letf_top{
+    width: 97%;
+    height: 58%;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 1% 1.5%;
+    background-Color: rgba(255,255,255,0.3);
+
+
+}
+.L_coniner .L_main .L_left .L_letf_bottom{
+    width: 97%;
+    height: 38%;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 1.5%;
+   /* background: linear-gradient(#6e6e6e, #a0a0a0, #707070);*/
+    background:linear-gradient(#C2C2C2 , #C2C2C2 ,#ffffff );
+    /*  background: transparent;*/
+   /* background-color: rgba(255,255,255,0.3);*/
+    /*background-image: linear-gradient(to top, #FAFAFB,#D0D0D0);*/
+   /* //background-color: #f0ad4e;*/
+
+}
+/********右边***************8*/
+.L_coniner .L_main .L_right{
+    width: 40%;
+    height: 100%;
+
+}
+
+.L_coniner .L_main .L_right .L_right_box{
+    width: 97%;
+    height: 23.5%;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin: 1.5%;
+    background: transparent;
+    background:linear-gradient(#C2C2C2, #C2C2C2 , #ffffff );
+    /*background-Color: rgba(255,255,255,0.3);*/
+}
+
+#L_chart1{
+    width: 100%;
+    height: 90%;
+    background: transparent;
+}
+#L_chart3{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    direction: ltr;
+
+}
+#L_chart3>div{
+    width: 50%;
+    height: 100%;
+    background: transparent;
+
+}
+#L_chart2{
+    width: 100%;
+    height: 90%;
+    background: transparent;
+
+}
+#L_chart4{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    direction: ltr;
+
+    background: transparent;
+
+}
+#L_chart4>div{
+    width: 33.3%;
+    height: 100%;
+    background: transparent;
+}
+.L_title{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    z-index: 10;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-Weight: bold;
+    margin-top: 1%;
+    background-color: transparent;
+}
+.lb_title{
+    width: 100%;
+    height: 10%;
+    font-size: 16px;
+    background-color: transparent;
+}
+.L_titleMap{
+    height: 5%;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-Weight: bold;
+    background: transparent;
+}
+
+/******折线图动画*****/
+.rect_line{
+    stroke-dasharray: 950;             /* //设置虚线的间隔长度 */
+    stroke-dashoffset: 950;             /* 设置线段偏移长度 */
+    animation: dash 6s ;
+    -webkit-animation-fill-mode: forwards;/*设置动画结束时保持动画结束时状态，backwards 代表animation结束时恢复最初状态*/
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+/*添加动画的效果，具体想怎么动，可以修改这里面的东西*/
+@keyframes dash {
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+/*******饼图提示框********/
+
+#chart4_tooltip{
+    position: absolute;
+    width: auto;
+    height: auto;
+    background: rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
+}

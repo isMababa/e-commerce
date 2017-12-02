@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /*大盒子*/
+        #wrap {
+            width: 100%;
+            height:90%;
+            box-sizing: border-box;
+        }
+
+        /*头部开始*/
+        #rheard {
+            width: 98%;
+            height:8%;
+            margin-right: 1%;
+            margin-left: 1%;
+            text-align: center;
+            font-size: 26px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#e2e2e2, #a0a0a0, #e2e2e2);
+            background-color: #000000;
+            margin-top: 0.5%;
+        }
+        #rheard .cover {        /*--------添加的div,作为文字蒙版-------*/
+            width: 98%;
+            height: 6.8%;
+            margin-right: 1%;
+            margin-left: 1%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            margin-top: 0.5%;
+            background: linear-gradient(to bottom, black 0%, transparent 50%, black);
+            opacity: 0.5;
+        }
+        #rheard > h1 {
+            color: #fff;
+            text-align: center;
+            line-height: 150%;
+            font-size: 120%;
+            box-sizing: border-box;
+        }
+        #rheard>a img{
+            display: block;
+            width: 2.5%;
+            height:3.5%;
+            position: absolute;
+            top:2.5%;
+            right: 1.5%;
+            z-index: 55555;
+        }
+        /*头部结束*/
+        /*---------------中部开始----------------------*/
+        /*中部大盒开始*/
+        #body1{
+            width: 98%;
+            height: 100%;
+            border-radius: 8px;
+            margin-top: 0.5%;
+            box-sizing: border-box;
+            margin-left: 1%;
+            margin-right: 1%;
+
+            /*margin-bottom: 1%;*/
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #6e6e6e 5%, #79797a 10%, #fdfdfe);
+
+        }
+        #rfist {
+            width: 99.5%;
+            height: 56%;
+            padding-top: 0.5%;
+            padding-left: 0.5%;
+            box-sizing: border-box;
+
+        }
+
+        /*中部大盒结束*/
+        /*----------------------------------*/
+        /*中部大盒里左盒开始*/
+        #rlf {
+            width: 33%;
+           /* height: 95.5%;*/
+            /*padding-bottom: 1%;*/
+            height: 96.5%;
+           /* padding-bottom: 2%;*/
+            float: left;
+
+            /*box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;*/
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+
+
+        }
+
+        #rft {
+            width: 100%;
+            height: 55%;
+        }
+
+        #rfb {
+            width: 100%;
+            height: 45%;
+        }
+
+        /*中部大盒里左盒结束*/
+        /*------------------------------------*/
+        /*中部大盒里中盒开始*/
+        #rcf {
+            width: 31%;
+            height: 97%;
+            float: left;
+            margin-left: 1%;
+            margin-right: 1%;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+        }
+
+        /*中部大盒里中盒结束*/
+        /*------------------------------------*/
+        /*中部大盒里右盒开始*/
+        #rrf {
+            width: 34%;
+            float: left;
+            height: 96.5%;
+           /* padding-bottom: 2%;*/
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+
+        }
+
+        #rt {
+            width: 100%;
+            /*height: 40%;*/
+            height: 55%;
+            /*background: #2f9cfa;*/
+        }
+
+        #ryl {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        #ryr {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        #rb {
+            width: 100%;
+            height:45%;
+            background: #e24dff;
+        }
+
+        /*中部大盒里右盒结束*/
+        /*中部结束*/
+        /*---------------------------------------*/
+        /*底盒开始*/
+        /*底部大盒开始*/
+        #rtow {
+            width: 100%;
+            height: 44%;
+            box-sizing: border-box;
+        }
+
+        /*底部大盒结束*/
+        /*--------------------------------------*/
+        /*底部大盒里右盒开始*/
+        #rlt {
+            width: 47.5%;
+            height: 96.5%;
+            float: left;
+            border-radius: 8px;
+            margin-bottom: 2.5%;
+            margin-left: 0.5%;
+            margin-right: 1.5%;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+
+        }
+
+        #rbl {
+            width: 60%;
+            height: 100%;
+            float: left;
+        }
+
+        #rbll {
+            width: 55%;
+            height: 100%;
+            float: left;
+        }
+
+        #rbrr {
+            width: 45%;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+
+        #rbrr > span {
+            font-size: 16px;
+            position: absolute;
+            color: #fff;
+            top: 6.8%;
+            left: 30%;
+        }
+
+        #dd {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 10%;
+
+        }
+
+        #rbr {
+            width: 39%;
+            height: 100%;
+            float: left;
+        }
+
+        /*底部大盒里右盒结束*/
+        /*----------------------------------------*/
+        /*底部大盒里右盒开始*/
+        #rrt {
+            width: 50%;
+            height: 96.5%;
+            float: left;
+            border-radius: 8px;
+            margin-bottom: 2.5%;
+            /*margin-left: 0.5%;*/
+            margin-right: 0.5%;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+        }
+
+        #rrl {
+            width: 37%;
+            height: 100%;
+            float: left;
+            /*background-color: #31ff2f;*/
+        }
+
+        #rrc {
+            width: 35%;
+            height: 100%;
+            float: right;
+           /* background-color: #31ff2f;*/
+        }
+
+        #rrr {
+            width: 28%;
+            height: 100%;
+            float: left;
+            position: relative;
+            background: rgba(255,255,255,0.01);
+        }
+
+        #zi {
+            position: absolute;
+            left: 35%;
+            top: 5%;
+            color: #fff;
+            font-size: 16px;
+            font-weight:800;
+        }
+
+        #zt {
+            width: 50%;
+            height: 35%;
+            border: 2px solid #13f0ff;
+            border-radius: 50%;
+            position: absolute;
+            right: 20%;
+            top:20%;
+        }
+
+        #zb {
+            width: 50%;
+            height: 35%;
+            border: 2px solid #13f0ff;
+            border-radius: 50%;
+            position: absolute;
+            right: 20%;
+            bottom: 3%;
+        }
+
+        .sp {
+            width: 38%;
+            height: 40%;
+            position: absolute;
+            top: -5%;
+            display: block;
+            font-size: 10px;
+            background:#13f0ff;
+            border: 2px solid #13f0ff;
+            border-radius: 50%;
+        }
+
+        #t {
+            position: absolute;
+            top: 25%;
+            left: 4%;
+        }
+
+        #b {
+            position: absolute;
+            top: 25%;
+            left:4%;
+        }
+        #sp1{
+              position: absolute;
+              top:25%;
+              left: 30%;
+              color: #2f9cfa;
+              font-size: 25px;
+          }
+        #sp2{
+            position: absolute;
+            top:25%;
+            left: 30%;
+            color:  #2f9cfa;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <!--------------------头部开始--------------------------->
+    <div id="rheard">
+        <div class="cover"></div>
+        <h1>特卖类大数据可视化展示</h1>
+        <a href="/e-commerce/html/index.html"><img src="img/timg2.gif" alt=""></a>
+    </div>
+    <!--------------------头部结束--------------------------->
+    <!--------------------中部开始--------------------------->
+    <div id="body1">
+    <div id="rfist">
+        <!--中部第一个盒子-->
+        <div id="rlf">
+            <div id="rft"></div>
+            <div id="rfb"></div>
+        </div>
+        <!--中部第二个盒子-->
+        <div id="rcf"></div>
+        <!--中部第三个盒子-->
+        <div id="rrf">
+            <div id="rt">
+                <div id="ryl"></div>
+                <div id="ryr"></div>
+            </div>
+            <div id="rb"></div>
+        </div>
+    </div>
+    <!--------------------中部结束--------------------------->
+    <!----------------底部开始-------------------------------->
+    <div id="rtow">
+        <!--底部左边三盒子-->
+        <div id="rlt">
+            <div id="rbl">
+                <div id="rbll"></div>
+                <div id="rbrr"><span>海外居住经历</span>
+                    <div id="dd"></div>
+                </div>
+            </div>
+            <div id="rbr"></div>
+        </div>
+        <!--底部右边三盒子-->
+        <div id="rrt">
+            <div id="rrl"></div>
+            <div id="rrc"></div>
+            <div id="rrr">
+                <h3 id="zi">房&车购买率</h3>
+                <div id="zt">
+                    <span class="sp"><span id="t">71.3%</span></span>
+                    <span id="sp1"><i class="fa fa-home fa-2x"></i></span>
+                </div>
+                <div id="zb">
+                    <span class="sp"><span id="b">55.9%</span></span>
+                    <span id="sp2"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!----------------底部结束-------------------------------->
+
+</body>
+</html>
+<script src="js/echarts.min.js"></script>
+<script src="js/amcharts.js"></script>
+<script src="js/pie.js"></script>
+<script>
+    /*--------中部左边开始-----------*/
+    //中部左边上柱形图
+    var myecharts1 = echarts.init(document.getElementById("rft"));
+    function zhu() {
+        var options = {
+           // backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: 'PC移动端占比',
+                top: '0',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['移动端网络购物交易占比', 'PC移动端网络交易占比'],
+                top: 30
+            },
+            grid: {
+                top:'25%',
+                left: '3%',
+                right: '4%',
+                bottom: 0,
+                containLabel: true
+            },
+            yAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                splitLine:{
+                    show:false
+                },
+                type: 'value',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+            },
+            xAxis:[ {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                type: 'category',
+
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                },
+                data: ['2010', '2012', '2013', '2014e', '2015e', '2016e', '2017e']
+            }
+            ],
+            series: [
+                {
+                    /* animationDelay: function (idx) {
+                     // 越往后的数据延迟越大
+                     idx=20;
+                     return idx * 100;
+                     },
+                     animationDuration: function (idx) {
+                     // 越往后的数据延迟越大
+                     idx=15;
+                     return idx * 100;
+                     },*/
+                    name: '移动端网络购物交易占比',
+                    type: 'bar',
+                    barWidth : 15,//柱图宽度
+                    stack: '总量',
+                    textStyle: {color: '#4c4c4c'},
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {color: '#4c4c4c'},
+                            position: 'right'
+                        }
+                    },
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96'
+                        }
+                    },
+                    data: [98.5, 94.2, 85.5, 70.0, 57.3, 47.3, 43.1]
+                },
+
+                {
+                    name: 'PC移动端网络交易占比',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {color: '#4c4c4c'},
+                            position: 'right'
+                        }
+                    },
+                    itemStyle:{
+                        normal:{
+                            color:'#3ffaff'
+                        }
+                    },
+                    data: [1.5, 5.8, 14.5, 30.0, 42.7, 52.7, 56.9]
+                }
+            ]
+        };
+        myecharts1.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts1.resize();
+        });
+
+
+    }
+    zhu();
+    //中部左边下条形图
+    var myecharts = echarts.init(document.getElementById("rfb"));
+    function tiao() {
+        var options = {
+            //backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '网购原因',
+                top: '5%',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+           /* legend: {
+                data: ['移动端网络购物交易占比', 'PC移动端网络交易占比'],
+                top: 'bottom'
+            },*/
+            grid: {
+                top:'20%',
+                left: '21%',
+                right: '6.5%',
+                bottom: '16.5%'
+                /*containLabel: true*/
+            },
+            xAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                splitLine:{
+                    show:false
+                },
+                type: 'value',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+            },
+            yAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                type: 'category',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                },
+                data: ['价格便宜', '价位比高', '商品的选择出厂', '可网款比较', '购买有保障']
+
+            },
+            series: [
+                {
+                    // name: '移动端网络购物交易占比',
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                     animationDuration: function (idx) {
+                     // 越往后的数据延迟越大
+                     idx=80;
+                     return idx * 100;
+                     },
+                    type: 'bar',
+                    barWidth : '70%',//柱图宽度
+                    /*barGap:'50%',*/
+                    left: '0',
+                    stack: '总量',
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                return params.value + '%'
+                            }
+                        }
+                    },
+                    data: [36.2, 62.2, 67.3, 70.5, 75.5]
+
+                }
+
+            ]
+        };
+        myecharts.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts.resize();
+        });
+    }
+    tiao();
+    /*--------中部左边结束-----------*/
+
+
+    /*--------中部中间开始-----------*/
+    var myecharts2 = echarts.init(document.getElementById("rcf"));
+    function zhong() {
+
+        options = {
+            backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '特卖类电商交易规模和趋势',
+                top: '0',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+            },
+
+            legend: {
+                top: 'bottom',
+                data: ['交易规模', '环比增长率']
+            },
+            xAxis: [
+                {   axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                    type: 'category',
+                    data: ['2010', '2012', '2013', '2014e', '2015e', '2016e', '2017e'],
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    axisLabel: {
+                        //rotate:'20',
+                        interval: 0,
+                        textStyle: {
+                            color: '#4c4c4c'
+                        }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    axisLine:{
+                        lineStyle:{
+                            color:'#000'
+                        }
+                    },
+                    splitLine:{
+                        show:false
+                    },
+                    type: 'value',
+                    min: 0,
+                    max: 1200,
+                   /*interval: 800,*/
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: {
+                            color: '#4c4c4c'
+                        }
+                    }
+
+                },
+                {
+                    type: 'value',
+                    name: '增长率',
+                    min: -1000,
+                    max: 150,
+                    show:false,
+//                    interval: 400,
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                }
+            ],
+            series: [
+                {
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 20;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx=60;
+                        return idx * 100;
+                    },
+                    name: '交易规模',
+                    type: 'bar',
+                    barWidth : '35%',//柱图宽度
+                    label: {
+                        normal: {
+                       /*     min: -800,
+                            max: 1600,*/
+                            show: true, position: 'top',
+                            textStyle: {
+                                color: '#4c4c4c',
+                                top: '100'
+                            }
+                        /*    formatter: function (params) {
+                                return params.value + '%'
+                            }*/
+                        }
+                    },
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96',
+                            lineStyle:{color:'#5ad3d9'}
+                        }
+                    },
+                    data: [25.0, 56.3, 130.0, 261.2, 420.3, 606.0, 787.8]
+                },
+
+                {
+                    name: '环比增长率',
+                    type: 'line',
+                    color:'#5ad3d9',
+                    yAxisIndex: 1,
+                    label: {
+                        normal: {
+                           /* min: -200,
+                            max: 100,*/
+
+                            show: true, position: 'top',
+                            textStyle: {color: '#dd2626'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [125.2, 130.9, 100.9, 60.9, 44.2, 30.0, 22.1]
+                }
+            ]
+        };
+        myecharts2.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts2.resize();
+        });
+    }
+    zhong();
+    /*--------中部中间结束-----------*/
+
+
+
+    /*--------中部右边盒子开始-----------*/
+    //中部右边上左饼图盒子
+    var myecharts3 = echarts.init(document.getElementById("ryl"));
+    function bing1() {
+        var datainfo = {
+
+        data1: [
+            {value: 0.7, name: '聚尚网'},
+            {value: 23.0, name: '聚美优品'},
+            {value: 2.6, name: '走秀网'},
+//            {value: 0.8, name: '蘑菇街'},
+            {value: 0.4, name: '魅力惠'},
+            {value: 11.5, name: '乐蜂网'},
+            {value: 55.2, name: '唯品会'},
+            {value: 3.6, name: '其他'},
+            {value: 1.9, name: '梦芭莎'},
+            {value: 0.3, name: '美丽说'}
+
+        ]
+    };
+
+
+        var options = {
+            //backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '电商市场占比',
+
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                },
+                x: 'center',
+                top: '0'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)",
+                color:['#bdddb1', '#59fff2']
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+                /*data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']*/
+            },
+            series: [
+                {
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 20;
+                        return idx * 100;
+                    },
+                    labelLine:{
+                        normal:{
+                            length:-8
+                        }
+                    },
+                    label: {
+                        normal: {
+                            min: 1500,
+                            max: 1600,
+                            show: true, position: 'inout',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                // console.log(params);
+                                return params.name + '\n' + params.value + "%"
+                            }
+                        }
+                    },
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['42%', '60%'],
+                    data: datainfo.data1,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ],
+            color: ['#e8ff5c','#85ee82','#ace9ee','#57eed6','#3cd2ee']
+        };
+        myecharts3.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts3.resize();
+        });
+
+    }
+    bing1();
+    //中部右边上右饼图盒子
+    var myecharts4 = echarts.init(document.getElementById("ryr"));
+    function bing2() {
+        var datainfo = {
+            data1: [
+                {value: 1.5, name: '食品饮料类'},
+                {value: 3.2, name: '图书影像类'},
+                {value: 27.3, name: '服装鞋包'},
+                {value: 38.9, name: '其他'},
+                {value: 4.7, name: '母婴类'},
+                {value: 4.9, name: '化妆类'},
+                {value: 19.5, name: '3C家电'}
+            ]
+        };
+
+        var options = {
+           // backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '物品类市场占比',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                },
+                /* subtext: '纯属虚构',*/
+                x: 'center',
+                top: '0'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+             orient: 'vertical',
+             left: 'left'
+             },
+           /* legend: {
+                orient : 'vertical',
+                x : 10,
+                y : "50%",
+                data:['新闻','微信','微博']
+            },*/
+            series: [
+                {
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 20;
+                        return idx * 100;
+                    },
+                    labelLine:{
+                        normal:{
+                            length:-4
+                        }
+                    },
+                    label: {
+                        normal: {
+
+                            show: true, position: 'inout',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                return params.name + '\n' + params.value + "%"
+                            }
+                        }
+                    },
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: datainfo.data1,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ],
+            color: ['#e8ff5c','#85ee82','#ace9ee','#57eed6','#3cd2ee']
+        };
+        myecharts4.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts4.resize();
+        });
+
+    }
+    bing2();
+    var myechart5 = echarts.init(document.getElementById("rb"));
+    function tiaoo() {
+        var options = {
+           // backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '用户年龄',
+                top: '0',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['移动端网络购物交易占比', 'PC移动端网络交易占比'],
+                top: 'bottom'
+            },
+            grid: {
+                top:'18%',
+                left: '15%',
+                right: '4%',
+                bottom: '16%'
+                /*containLabel: true*/
+            },
+            xAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                splitLine:{
+                    show:false
+                },
+                type: 'value',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+
+            },
+            yAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                type: 'category',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                },
+                data: ['18岁一下', '31-35岁', '25-30岁', '19-24岁','36-42岁', '40岁以上']//可选择无理由退货，
+            },
+            series: [
+                {
+                    // name: '移动端网络购物交易占比',
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 28;
+                        return idx * 100;
+                    },
+                     animationDuration: function (idx) {
+                     // 越往后的数据延迟越大
+                     idx=80;
+                     return idx * 100;
+                     },
+                    type: 'bar',
+                    barWidth : '85%',//柱图宽度
+                    left: '0',
+                    stack: '总量',
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            //position: 'insideRight'
+                            position: 'right',
+                            //  position: 'inside',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+
+                        }
+                    },
+                    data: [8.6,  14.5, 22.8, 32.0, 11.3,10.8]
+                }
+
+            ]
+        };
+        myechart5.setOption(options);
+        window.addEventListener("resize", function () {
+            myechart5.resize();
+        });
+
+        myechart5.on('click', function (parmas) {
+            daizu(parmas)
+        })
+    }
+    tiaoo();
+    /*--------中部右边盒子结束-----------*/
+
+
+    /*--------底部盒子开始-----------*/
+    //底部左边条形图开始
+    var myechart6 = echarts.init(document.getElementById("rbll"));
+    function tiaoa() {
+        var options = {
+           // backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '用户学历(含目前就读)',
+                top: '5%',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['移动端网络购物交易占比', 'PC移动端网络交易占比'],
+                top: 'bottom'
+            },
+            grid: {
+                left: '26%',
+                right: '10.5%',
+                bottom: '10%'
+                /*containLabel: true*/
+            },
+            xAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                splitLine:{
+                    show:false
+                },
+                type: 'value',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+            },
+            yAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                type: 'category',
+                axisLabel: {
+                    rotate: '30',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c',
+                        fontSize:'10'
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        /*position: 'insideRight',*/
+                        //  position: 'inside',
+                        nameRotate: '5',
+                        textStyle: {color: '#2530ff'}
+
+                    },
+                    nameTextStyle: {
+                        color: '#fff'
+                    }
+                },
+                data: ['高中及以下', '专科', '大学本科', '硕士及以上']
+            },
+            series: [
+                {
+                    // name: '移动端网络购物交易占比',
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 38;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx=70;
+                        return idx * 100;
+                    },
+                    type: 'bar',
+                    barWidth : '36%',//柱图宽度
+                    left: '0',
+                    stack: '总量',
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96'
+                        }
+                    },
+                    label: {
+
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            //  position: 'inside',
+                            textStyle: {color: '#4c4c4c'},
+
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+
+                        }
+                    },
+                    data: [5.8, 21.3, 60.6, 12.4]
+                }
+
+            ]
+        };
+        myechart6.setOption(options);
+        window.addEventListener("resize", function () {
+            myechart6.resize();
+        });
+
+        /* myechart6.on('click',function (parmas) {
+         daizu(parmas)
+         })*/
+    }
+    tiaoa();
+    //底部左边条形图结束
+    //底部左边环形图开始
+    var myecharts7 = echarts.init(document.getElementById("dd"));
+    function bingb() {
+        var options = {
+          //  backgroundColor: 'rgba(255,255,255,0.6)',
+             title : {
+             /*text: '国外居住经历',
+             textStyle:{
+             fontWeight:'100',
+             color:'#fff'
+             },
+             x:'center',
+             top:'-10'*/
+                 tooltip: {
+                     trigger: 'item',
+                     show: true,
+                     formatter: "{a} <br/>{b}: {c} ({d}%)",
+                     color:['red', 'green']
+                 }
+
+             },
+
+
+            series: [
+                {
+
+                    name: '访问来源',
+                    top: '10%',
+                    type: 'pie',
+                    radius: ['45%', '75%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: true,//false
+                           // position: 'bottom',
+                           //show: true,
+                           // position: 'top',
+                             position: 'inside',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    /*labelLine: {
+                        normal: {
+                            show: false
+
+                        }
+                    },*/
+                    labelLine:{
+                        normal:{
+                            length:'-10'
+                            /*show: false*/
+                        }
+                    },
+                    data: [
+                        {value: 22.3, name: ''},
+                        {value: 77.7, name: ''}
+
+                    ],
+                    color: ['#28e1ff','#85ee82']
+                }
+            ]
+
+        };
+
+        myecharts7.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts7.resize();
+        });
+
+    }
+    bingb();
+    //底部左边环形图结束
+    //底部左边饼形图开始
+    var myecharts8 = echarts.init(document.getElementById("rbr"));
+    function binga() {
+        var datainfo = {
+            data1: [
+                {value: 48.3, name: '已婚'},
+                {value: 51.8, name: '未婚'}
+
+            ]
+        };
+        var options = {
+           // backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '用户婚姻',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                },
+                /* subtext: '纯属虚构',*/
+                x: 'center',
+                top: '18'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+
+            series: [
+                {
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 10;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 20;
+                        return idx * 100;
+                    },
+                    labelLine:{
+                        normal:{
+                            length:5
+                        }
+                    },
+                    label: {
+                        normal: {
+
+                            show: true, position: 'inout',
+                            textStyle: {color: '#000'},
+                            formatter: function (params) {
+                                //console.log(params);
+                                return params.name + '\n' + params.value + "%"
+                            }
+                        }
+                    },
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    //center: ['40%', '70%'],
+                    data: datainfo.data1,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 20,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ],
+            color: ['#28e1ff','#85ee82']
+        };
+        myecharts8.setOption(options);
+        window.addEventListener("resize", function () {
+            myecharts8.resize();
+        });
+
+    }
+    binga();
+    //底部左边饼形图结束
+    /*----------------------------------------------*/
+    //底部右边条形图开始
+    var myechart9 = echarts.init(document.getElementById("rrl"));
+    function tiaos() {
+        var options = {
+            //backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '个人收入',
+                top: '5%',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['移动端网络购物交易占比', 'PC移动端网络交易占比'],
+                top: 'bottom'
+            },
+            grid: {
+                left: '20%',
+                right: '12%',
+                bottom: '10%'
+                /*containLabel: true*/
+            },
+            xAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                splitLine:{
+                    show:false
+                },
+                type: 'value',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+            },
+            yAxis: {
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                type: 'category',
+                axisLabel: {
+                    rotate: '20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                },
+                data: ['3k以下', '3k-5k', '5k-8k', '8k-10k', '10k以上']
+            },
+            series: [
+                {
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 48;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 60;
+                        return idx * 100;
+                    },
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96'
+                        }
+                    },
+                    type: 'bar',
+                    barWidth : '38%',//柱图宽度
+                    left: '0',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',//insideRight
+                            fontSize:'12',
+                            color: '#4c4c4c',
+                            formatter: function (params) {
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [36.2, 62.2, 67.3, 70.5, 75.5]
+                }
+
+            ]
+        };
+        myechart9.setOption(options);
+        window.addEventListener("resize", function () {
+            myechart9.resize();
+        });
+
+    }
+    tiaos();
+    //底部右边条形图结束
+
+    //底部右边条形图开始
+    var myechart10 = echarts.init(document.getElementById("rrc"));
+    function tiaod() {
+        var options = {
+          //  backgroundColor: 'rgba(255,255,255,0.6)',
+            title: {
+                text: '家庭月收入',
+                top: '5%',
+                subtext: '',
+                left: 'center',
+                textStyle: {
+                    fontWeight: '100',
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['移动端网络购物交易占比', 'PC移动端网络交易占比'],
+                top: 'bottom'
+            },
+            grid: {
+                left: '22%',
+                right: '12%',
+                bottom: '10%'
+                /*containLabel: true*/
+            },
+            xAxis: {
+                splitLine:{
+                    show:false
+                },
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                type: 'value',
+                axisLabel: {
+                    //rotate:'20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                axisLine:{
+                    lineStyle:{
+                        color:'#000'
+                    }
+                },
+                axisLabel: {
+                    rotate: '20',
+                    interval: 0,
+                    textStyle: {
+                        color: '#4c4c4c'
+                    }
+                },
+                data: ['5k以下', '5k-10k', '20k-50k', '50k以上']
+            },
+            series: [
+                {
+                    animationDelay: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 58;
+                        return idx * 100;
+                    },
+                    animationDuration: function (idx) {
+                        // 越往后的数据延迟越大
+                        idx = 50;
+                        return idx * 100;
+                    },
+                    itemStyle:{
+                        normal:{
+                            color:'#9cff96'
+                        }
+                    },
+                    type: 'bar',
+                    barWidth : '36%',//柱图宽度
+                    left: '0',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            textStyle: {color: '#4c4c4c'},
+                            formatter: function (params) {
+                                //console.log(params);
+                                return params.value + "%"
+                            }
+                        }
+                    },
+                    data: [36.2, 62.2, 67.3, 70.5]
+                }
+
+            ]
+        };
+        myechart10.setOption(options);
+        window.addEventListener("resize", function () {
+            myechart10.resize();
+        });
+
+    }
+    tiaod();
+    //底部右边条形图结束
+    /*--------底部右边盒子结束-----------*/
+
+</script>

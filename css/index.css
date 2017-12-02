@@ -1,0 +1,151 @@
+/*公用样式*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #fff;
+}
+.bd{
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /*background: linear-gradient(#ededed, #ffffff);*/
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(#acacad 1%, #828282 5%, #8c8c8d 10%, #d5d5d9);
+}
+.pr{
+    position: relative;
+}
+.pa{
+    position: absolute;
+}
+.w100{
+    width: 100%;
+}
+.h100{
+    height: 100%;
+}
+.w30{
+    width: 33%;
+}
+.fw{
+    font-weight: bold;
+}
+/*头部标题*/
+.e-wrap{
+    top: 1%;
+    left: 1%;
+    width: 98%;
+    height: 98%;
+}
+.header{
+    width: 100%;
+    height: 8%;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(#6e6e6e, #a0a0a0, #707070);
+    background-color: #000000;
+}
+.header .cover {        /*--------添加的div,作为文字蒙版-------*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, black 0%, transparent 50%, black);
+    opacity: 0.5;
+}
+.header_logo{
+    width:180px;
+    height: 60%;
+    top: 10%;
+    left: 2%;
+}
+.header_title{
+    top: 20%;
+    left: 0;
+    font-size: 24px;
+    text-align: center;
+}
+.header_date{
+    top: 20%;
+    right:  2%;
+    width:auto;
+    font-size: 14px;
+    text-align: right;
+}
+.date{
+    padding-left: 10px;
+}
+/*图表*/
+.myMain{
+    left: 0;
+    bottom:0;
+    width: 100%;
+    height: 91.3%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    /*background: linear-gradient(#ededed, #ffffff);*/
+    background: linear-gradient(#acacad 1%, #6e6e6e 5%, #79797a 10%, #fdfdfe);
+}
+.lie{
+    float: left;
+    height: 100%;
+}
+.lie1{
+    width: 28%;
+}
+.lie2{
+    width: 44%;
+    /*background: url("../images/bg.jpg");*/
+}
+.lefthang{
+    width: 100%;
+    height: 32%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+}
+.righthang{
+    width: 100%;
+    height: 28%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+}
+.rightb{
+    width: 100%;
+    height: 40%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.jiaoyier {
+    top: 0;
+    left: 2%;
+    width: 180px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 2.3;
+}
+.renshu{
+    top: 0;
+    right: 2%;
+    width: 180px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 2.3;
+}

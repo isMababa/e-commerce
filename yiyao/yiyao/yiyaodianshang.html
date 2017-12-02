@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医疗电商市场大数据可视化分析展示</title>
+    <link Rel="ICON title-logo " href="WechatIMG4.jpeg">
+    <style>
+        /*
+    *说明：屏幕四周留1%空间,header与main之间留2%的空间，，mian内部的div之间四周margin=1.5%
+    *       头部header和main，参见css设置，，，*** .cover 为添加的div作为文字的蒙版
+    *       各模块外的div有圆角、背景、 阴影   border-radius: 8px;
+    *             上面三个div   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    *                              backgroundColor: 'rgba(255,255,255,0.6)',
+    *             上面三个div   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    *                              backgroundColor: 'rgba(255,255,255,0.3)',
+    *
+    *       各个模块图形标题的位置      top: '1%',    left: '2%',
+    *          文字样式  textStyle: {fontSize: 16, color: '#4c4c4c', fontWeight: 'bold'}
+    *           除标题外文字调到最小，或自己调整合适就行
+    *           文字颜色主要为    color: '#4c4c4c'
+    */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            box-sizing: border-box;
+        }
+        .header {
+            width: 98%;
+            height: 8%;
+            margin-left: 1%;
+            margin-right: 1%;
+            text-align: center;
+            font-size: 100%;
+            line-height: 300%;
+            position: absolute;
+            top: 1%;
+            left: 0;
+            color: #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#e2e2e2, #a0a0a0, #e2e2e2);
+            background-color: #000000;
+        }
+
+        .header .cover {        /*--------添加的div,作为文字蒙版-------*/
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            background: linear-gradient(to bottom, black 0%, transparent 50%, black);
+            opacity: 0.5;
+            z-index: 122;
+        }
+        .main {
+            width: 98%;
+            height: 89%;
+            margin-left: 1%;
+            margin-right: 1%;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#acacad 1%, #6e6e6e 5%, #79797a 10%, #fdfdfe);
+        }
+    </style>
+    <script type="text/javascript"
+            src="http://public.tableau.com/javascripts/api/tableau-2.min.js">
+    </script>
+</head>
+<body>
+<div class="header" id="header">
+    <div class="cover"></div>
+    <h3 style="font-size: 26px;line-height: 2.5;">医疗电商市场大数据可视化分析展示</h3>
+</div>
+<div class="main" id="main"></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+        function initViz() {
+            var containerDiv = document.getElementById('main'),
+                url ='http://public.tableau.com/views/_15726/sheet3?:embed=y&:display_count=yes&publish=yes',
+                options = {
+                    width:'100%',
+                    height:'100%',
+                    hideTabs: true,
+                    hideToolbars:true,
+                    onFirstInteractive: function () {
+                        console.log("Run this code when the viz has finished loading.");
+                    }
+                };
+            var viz = new tableau.Viz(containerDiv, url, options);
+        }
+    initViz();
+</script>
